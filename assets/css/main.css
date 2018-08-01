@@ -195,6 +195,7 @@ h6{
 
 .btn-panel{
   background: #a1c60f;
+  font-family: 'Roboto', sans-serif!important;
 }
 .btn-success{
    background: #0071bc!important;
@@ -211,6 +212,10 @@ h6{
   margin-left: -12px;
   height: 60px;
   border-bottom: 2px solid #666;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+    color: #fff;
+    background-color: #a1c60f;
 }
 
 .team-manajemen{
@@ -250,6 +255,98 @@ h6{
 .gallery-3{
    background-color: #e8e8e8;
 }
+
+.nav-gossip{
+  margin-top: -10px!important;
+  width: 103%!important;
+  margin-left: -13px!important;
+  height: 45px;
+  border-bottom: 2px solid #666;
+}
+
+.dropdown-gossip{
+  margin-left: 80px!important;
+  text-align: center!important;
+    font-family: 'Roboto', sans-serif!important;
+  font-size: 13px;
+  font-weight: bold;
+
+}
+
+.dropdown-gossip>li>a {
+  text-align: center!important;
+    font-family: 'Roboto', sans-serif!important;
+  font-size: 13px;
+  font-weight: bold;
+  color:#666;
+}
+
+.background-gossip{
+  margin-top: 10px;
+  background-color: #E8E8E8;
+  padding : 3px;
+  height: 100%;
+  width: 47%;
+  margin-left: 20px;
+}
+
+.content-gossip{
+  background-color: #fff;
+  margin-top: -10px;
+  height: 70px;
+}
+
+.card-title{
+  font-family: 'Open Sans', sans-serif!important;
+  font-weight: bold;
+  padding-left: 5px;
+  padding-top: 3px;
+}
+
+.card-text{
+   font-family: 'Roboto', sans-serif!important;
+   font-weight: normal;
+     padding-left: 5px;
+  padding-top: 3px;
+}
+
+.btn-gossip{
+  margin-top: 10px;
+}
+
+.title-pengumuman{
+  background-color: #0071bc!important;
+  font-family: 'Open Sans', sans-serif!important;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 4px!important;
+}
+
+  .pinned-title {
+    background-color: #0071bc;
+    color: #ffffff;
+    padding: 5px 15px;
+
+
+  }
+
+  .border-pengumuman{
+    border : 1px solid #000;
+  }
+
+.background-pengumuman{
+  margin-top: 5px;
+  background-color: #E8E8E8;
+  padding : 3px;
+}
+
+.btn-pengumuman{
+  margin-top: 40px;
+}
+
+
+
+
 
 /*KP INSTITUTE PERTANIAN BOGOR*/
 
