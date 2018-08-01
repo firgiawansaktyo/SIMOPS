@@ -1,0 +1,2080 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 		<!-- Meta -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta charset="utf-8" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" /><meta name="description" /><meta name="author" /><meta name="keywords" content="MediaCenter, Template, eCommerce" /><meta name="robots" content="all" /><title>
+	Pertamina RU IV Cilacap
+</title>
+
+	    <!-- Bootstrap Core CSS -->
+	    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+	    
+	    <!-- Customizable CSS -->
+	    <link rel="stylesheet" href="assets/css/main.css" /><link rel="stylesheet" href="assets/css/search.css" /><link rel="stylesheet" href="assets/css/green.css" /><link rel="stylesheet" href="assets/css/owl.carousel.css" /><link rel="stylesheet" href="assets/css/owl.transitions.css" />
+		<!--<link rel="stylesheet" href="assets/css/owl.theme.css" />-->
+		<link href="assets/css/lightbox.css" rel="stylesheet" /><link rel="stylesheet" href="assets/css/animate.min.css" /><link rel="stylesheet" href="assets/css/bootstrap-select.min.css" /><link href="assets/css/green.css" rel="alternate stylesheet" title="Green color" />
+
+		
+		<!-- Icons/Glyphs -->
+		<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+		<link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <!-- Fonts --> 
+        <link rel="stylesheet" href="assets/fonts/stylesheet.css" />
+		<!--<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css" />-->
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="assets/images/favicon.png" />
+
+		<!-- Font Open Sans & Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+		<!-- HTML5 elements and media queries Support for IE8 : HTML5 shim and Respond.js -->
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+        
+        <script type="text/javascript" src="assets/js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="assets/js/imagesloaded.pkgd.min.js"></script>       
+     
+          <script type="text/javascript">
+              var currenttime = '7/27/2018 10:40:56 AM';
+              var montharray = new Array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+              var dayarray = new Array("Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu");
+              var serverdate = new Date(currenttime);
+
+              function padlength(what) {
+                  var output = (what.toString().length == 1) ? "0" + what : what;
+                  return output
+              }
+
+              function displaytime() {
+                  serverdate.setSeconds(serverdate.getSeconds() + 1);
+                  var datestring = dayarray[serverdate.getDay()] + ", " + padlength(serverdate.getDate()) + " " + montharray[serverdate.getMonth()] + " " + serverdate.getFullYear();
+                  var timestring = padlength(serverdate.getHours()) + ":" + padlength(serverdate.getMinutes()) + ":" + padlength(serverdate.getSeconds());
+                  document.getElementById("jam").innerHTML = timestring;
+                  document.getElementById("tgl").innerHTML = datestring;
+              }
+
+              window.onload = function () { displaytime(); setInterval("displaytime()", 1000); }
+
+           
+    </script>
+    <!-- Pace --> 
+    <link rel="stylesheet" href="assets/css/pace.css" />
+    <script type="text/javascript" src="assets/js/pace.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery-scrolltofixed-min.js"></script>
+    
+<link type="text/css" rel="stylesheet" href="assets/css/protip.min.css" />
+<script type="text/javascript" src="assets/js/protip.min.js"></script>
+<style type="text/css">  
+#alert_placeholder a:link 
+{
+    color:Black;
+}
+</style>
+<script type="text/javascript" src="assets/js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: 'textarea',
+        height: 170,
+        menubar: false,
+        plugins: [
+    'advlist image',
+    'searchreplace visualblocks code fullscreen',
+    'insertdatetime contextmenu paste code emoticons textcolor colorpicker'
+  ],
+        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | forecolor backcolor emoticons image'
+    });
+
+
+    $(document).on('focusin', function (e) {
+        if ($(e.target).closest(".mce-window").length) {
+            e.stopImmediatePropagation();
+        }
+    });
+
+    $(document).ready(function () {
+        $.protip();
+
+        $('#ucapanModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var nopek = button.data('nopek')
+            var nama = button.data('nama')
+            var loged = button.data('isloged')
+            var modal = $(this)
+            modal.find('.modal-title').text('Beri Ucapan Kepada : ' + nama + ' [ ' + nopek + ' ]')
+            modal.find('.modal-body input').val(nopek)
+
+            if (loged != 'Y') {
+                $("[id*=btnKirim]").attr("disabled", "true");
+                showalert('<i class="glyphicon glyphicon-info-sign"></i> Silahkan <a href="#" data-toggle="modal" data-target="#mdlLogin">Login</a> terlebih dahulu!', 'alert-danger alert-dismissable fade in', '0');
+                return e.preventDefault();
+            }
+
+        });
+
+        $("[id*=btnKirim]").bind("click", function () {
+            document.getElementById('msgInfo').innerHTML = "";
+            document.getElementById('btnKirim').innerHTML = "Sending...";
+
+            $("[id*=btnKirim]").attr("disabled", "true");
+            $.post("proses.aspx?opt=ultah", { nopek: $("[id*=txtNopek]").val(), ucapan: tinyMCE.get('txtUcapan').getContent() },
+                    function (data, status) {
+                        if (data != "") {
+                            $("[id*=btnKirim]").removeAttr("disabled", "");
+                            document.getElementById('msgInfo').innerHTML = data;
+                            document.getElementById('btnlogin').innerHTML = "Send";
+                        } else {
+                            //window.location.href = 'Ultah.aspx?no=' + $("[id*=txtNopek]").val();
+                           
+                            $("[id*=btnKirim]").removeAttr("disabled", "");
+                            showalert('<i class="fa fa-birthday-cake" aria-hidden="true"></i> Ucapan Ulang Tahun berhasil dikirim', 'alert-success alert-dismissable fade in', 0);
+                            $('#ucapanModal').modal('hide');
+                            document.getElementById('msgInfo').innerHTML = "";
+                            document.getElementById('btnKirim').innerHTML = "Send";
+                            tinyMCE.get('txtUcapan').setContent("");
+                        }
+                    });
+
+        });
+
+    });
+
+    /*
+    $(document).ready(function () {
+        $.ajax({
+            url: "ajaxcontent.aspx?opt=pengumuman-hot",
+            type: "POST",
+            dataType: "html",
+            success: function (data) {
+                $('#hotPengumuman').html(data);
+            }
+        });
+
+        $.ajax({
+            url: "ajaxcontent.aspx?opt=pengumuman-reg",
+            type: "POST",
+            dataType: "html",
+            success: function (data) {
+                $('#regPengumuman').html(data);
+            }
+        });
+
+
+        $.ajax({
+            url: "ajaxcontent.aspx?opt=fotogaleri",
+            type: "POST",
+            dataType: "html",
+            success: function (data) {
+                $('#boxgaleri').html(data);
+            }
+        });
+        
+    });
+    */
+
+</script>
+
+
+</head>
+	<!-- HelpdeskModal -->
+	
+	<div class="modal fade" id="HelpdeskModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="H1">Helpdesk</h4>
+				</div>
+				<div class="modal-body">
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<tbody>
+								<tr class="list-bordered">
+									<td>
+										<h5><a href="http://10.54.2.50:88/sik/perbaikan/perbaikan_new/SIK_PERBAIKAN_KOMUNIKASI_TELEPON_DLLList.asp" target="_blank"><i class="fa fa-phone" style="margin-right:10px;"></i> Jaringan Telpon</a></h5>
+									</td>
+								</tr>
+								<tr class="list-bordered">
+									<td>
+										<h5><a href="http://10.54.2.50:88/sik/perbaikan/PERBAIKANList.asp" target="_blank"><i class="fa fa-desktop" style="margin-right:10px;"></i> Komputer Multimedia</a></h5>
+									</td>
+								</tr>
+								<tr class="list-bordered">
+									<td>
+										<h5><a href="http://10.54.2.50:88/FASUM/perbaikan2/FASUM_PERBAIKANlist.asp" target="_blank"><i class="fa fa-wrench" style="margin-right:10px;"></i> General Maintenance</a></h5>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal Login -->
+	<div class="modal fade" id="mdlLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Login</h4>
+				</div>
+				<div class="modal-body">
+    				<div class="form-horizontal hide">
+						<div class="form-group">
+	                        <img src="assets/images/img_login_survey.jpg" />
+                        </div>
+                    </div>
+					<div class="form-horizontal">
+						    <div class="form-group  has-feedback">
+							    <label for="txtUsername" class="col-sm-2 control-label">Username</label>
+							    <div class="col-sm-10">
+								    <input type="text" class="form-control" id="txtUsername" name="txttxtUsername" placeholder="">
+                                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+							    </div>
+						    </div>
+						    <div class="form-group  has-feedback">
+							    <label for="txtPassword" class="col-sm-2 control-label">Password</label>
+							    <div class="col-sm-10">
+								    <input type="password" class="form-control" id="txtPassword" name="txtPassword" placeholder="">
+                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+							    </div>
+						    </div>
+
+                        <div class="col-sm-12">
+                            <span class="text-danger" id="msgLogin"></span>
+                        </div>
+
+					</div>
+				</div>
+				<div class="modal-footer">
+                    <span class="pull-left hide"><i class="fa fa-url"></i><b><a href="http://ptmkpspoint03.pertamina.com:91/ecorr-new/" target="_blank">E-Corr</a></b></span>
+					<a href="#" type="button" class="btn btn-danger hide" data-dismiss="modal">Cancel</a>
+					<a type="button" id="btnlogin" class="btn btn-success" data-keyboard="false">Login</a>
+				</div>
+			</div>
+		</div>
+	</div>
+    <!--end modal-->
+ <body class="cnt-home">
+ 
+ 
+<!-- ============================================== HEADER ============================================== -->
+<header class="header-style-1 header-style-3">
+
+<!-- ============================================== TOP MENU ============================================== -->
+<div class="top-bar animate-dropdown">
+
+	<div class="container">
+		<div class="header-top-inner">
+			<div class="cnt-account">
+				<ul class="list-unstyled">
+					<li><a href="http://www.pertamina.com/" target="_blank"><i class="icon fa fa-globe"></i>www.pertamina.com</a></li>
+					<li><a href="https://mail.pertamina.com/owa" target="_blank"><i class="icon fa fa-envelope"></i>mail.pertamina.com</a></li>
+				</ul>
+			</div><!-- /.cnt-account -->
+
+			<div class="cnt-block">
+				<ul class="list-unstyled list-inline">  
+       				<li>
+						
+					</li>
+                    <li class="navbar-form" style="height:30px !important;margin:0px !important;">
+                        <div class="input-group" style="margin-top:-5px;margin-bottom:0px; padding:0px;">
+                            <span class="input-group-addon"><i class="fa fa-search bg-success"></i></span>
+                            <input type="text" id="txtsearchAll" name="txtsearchAll"  class="form-control input-sm" placeholder="Cari..."/></div>
+                    </li>
+					<li>
+						<a href="#" data-toggle="modal" data-target="#HelpdeskModal">Helpdesk</a>
+					</li>
+
+					<li>
+                        <span id="ctl00_lblLogInOut"><a href="#" data-toggle="modal" data-target="#mdlLogin" class= "logintag">Login</a></span>
+					</li>
+				</ul><!-- /.list-unstyled -->
+			</div><!-- /.cnt-cart -->
+			<div class="clearfix"></div>
+		</div><!-- /.header-top-inner -->
+	</div><!-- /.container -->
+</div><!-- /.header-top -->
+<!-- ================ TOP MENU : END ================== -->
+<div class="main-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-9 logo-holder">
+				<div class="logo">
+					<a href="default.aspx">
+						<img src="assets/images/logo.png" alt=""/>
+					</a>
+				    <strong><span id="ctl00_lblsvr"></span></strong></div><!-- /.logo -->
+			</div><!-- /.logo-holder -->
+
+			<div class="col-xs-12 col-sm-12 col-md-3 time">
+				<h2 id="jam"></h2>
+				<h5 id="tgl">&nbsp;</h5>	
+				
+				<h6><span id="ctl00_lblUser" style="font-weight:bold;"><i class="fa fa-globe"></i> 36 user online | <i class="fa fa-user"></i> 0 members</span></h6>	
+			</div>
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</div><!-- /.main-header -->
+
+<!-- ============================================== NAVBAR ============================================== -->
+
+
+<div class="header-nav animate-dropdown">
+    <div class="container">
+        <div class="yamm navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <button data-target="#mc-horizontal-menu-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="nav-bg-class">
+                <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
+	            <div class="nav-outer">
+	            	<ul class="nav navbar-nav">
+			<li>
+				<a href="Default.aspx">Home</a>
+			</li>
+            <li>
+				<a href="http://ptmkpspoint03.pertamina.com:91/ecorr-new" target="_blank">e-Corr </a>
+			</li>
+			
+            <li>
+				<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Knowledge & Doc. Management<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="Kliping.aspx">Kliping</a></li>
+					<li><a href="Files/Cara%20Update%20Expertise%20MySite%20KOMET.pdf" target="_blank">Cara Update MySite KOMET</a></li>
+                    <li><a href="http://simops.pertamina.com:84/e-library/" target="_blank">e-Library</a></li>
+
+                    <li><a href="energia.aspx">Energia </a></li>
+					<li><a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Formulir <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="Files/Formulir Permintaan Perubahan Aplikasi.xlsx" target="_blank">Formulir Permintaan Perubahan Aplikasi</a></li>
+							<li><a href="Files/Incident Request Form.v.2.xls" target="_blank">Form Gangguan Komputer & MySAP</a></li>
+							<li><a href="Files/Formulir Permintaan Sarana TI.zip" target="_blank">Permintaan Layanan IT (e-Mail, VPN, Internet, & Wifi)</a></li>
+							<li><a href="Files/Form Permintaan IT Supplies 2017.xlsx" target="_blank">Permintaan IT Supplies (Tonner, CD-R/RW, dll)</a></li>
+							<li><a href="http://simops.pertamina.com:88/sosialisasi/DATAFILE/176_FORMULIR_PERMINTAAN_KOMPUTER.doc" target="_blank">Alokasi Komputer & Perlengkapan Tambahan</a></li>
+							<li><a href="Files/Formulir Permintaan Installasi PIMS.docx" target="_blank">Permohonan Install PIMS</a></li>
+							<li><a href="Files/Formulir_FasTelp2012.xls" target="_blank">Permintaan Fas. Telepon Komperta</a></li>
+							<li><a href="http://10.54.16.77/dokumen/Formulir_FasTelp Kantor 2012.xls" target="_blank">Permintaan Fas. Telepon Kantor</a></li>
+                            <li role="separator" class="divider"></li>
+						    <li><a href="Files/Form Manajemen Perubahan di Area Kilang_baru 03-05-2017.doc" target="_blank">MKP-MOC (Management of Change)</a></li>
+							<li><a href="Files/Permohonan_Memperoleh_e-FIN.doc" target="_blank">Formulir Permohonan Memperoleh e-Fin</a></li>
+                            <li role="separator" class="divider"></li>
+							<li><a href="Files/FormulirMySAP/Prosedur Pengisian Formulir - User.docx" target="_blank">Prosedur Pengisian Formulir-User</a></li>
+							<li><a href="Files/FormulirMySAP/TKO-2015-B-003-IT OPS-Lamp 3-MySAP Permanent User Id Request(F-S....xlsx" target="_blank">Formulir F-SA-A1 Permintaan User ID MySAP Permanen</a></li>
+							<li><a href="Files/FormulirMySAP/Formulir F-SA-A2 Permintaan User ID MySAP Temporer rev1.xls" target="_blank">Formulir F-SA-A2 Permintaan User ID MySAP Temporer</a></li>
+							<li><a href="Files/FormulirMySAP/Formulir Pengalihan User Id MySAP BI.xls" target="_blank">Formulir Pengalihan User Id MySAP BI</a></li>
+							<li><a href="Files/FormulirMySAP/TKO-2015-B-003-IT OPS-Lam 4-MySAP Replacement Form (F-SA-RPL).xlsx" target="_blank">Formulir Pengalihan User Id MySAP</a></li>
+							<li><a href="Files/FormulirMySAP/Formulir Permintaan Penambahan User Id MySAP BI Temporer.xls" target="_blank">Formulir Permintaan Penambahan User Id MySAP BI Temporer</a></li>
+							<li><a href="Files/FormulirMySAP/Formulir Perubahan Otorisasi MySAP.xls" target="_blank">Formulir Perubahan Otorisasi MySAP</a></li>
+                            <li role="separator" class="divider"></li>
+							<li><a href="upload/Files/Form Permintaan Pendaftaran User ID ROAS v4b.xls" target="_blank">Formulir Permintaan Akses ROAS</a></li>
+							<li><a href="Files/Form.P2P.SP3_Online.xlsm" target="_blank">Formulir Permintaan User ID Procure to Pay</a></li>
+						</ul>
+					</li>
+					<li><a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Materi KPI Online <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="Files/Materi KPI Online/Kode_Posisi_dan_KPI_GM.xls" target="_blank">Kode Posisi & Kode KPI GM </a></li>
+							<li><a href="Files/Materi KPI Online/CARA UP LOAD REALISASI KPI PADA PERFORMANCE DIALOGUE.doc" target="_blank">Cara Upload Realisasi KPI pada Performance Dialogue </a></li>
+							<li><a href="Files/Materi KPI Online/FORMAT REALISASI KPI + SAMBAL.xls" target="_blank">Format Realisasi KPI + Sambal </a></li>
+							<li><a href="Files/Materi KPI Online/FORMAT SAMBAL.xls" target="_blank">Format Sambal </a></li>
+							<li><a href="Files/Materi KPI Online/Sosialisasi PMS Online Realisasi dan SAMBAL.ppt" target="_blank">Sosialisasi PMS Online Realisasi dan SAMBAL </a></li>
+							<li><a href="Files/Materi KPI Online/Refresher_Training_PMS_Online.ppt" target="_blank">Refresher Training PMS Online </a></li>
+							<li><a href="Files/Materi KPI Online/PMS_User_Guide_v1.pdf" target="_blank">PMS User Guidee </a></li>
+							<li><a href="Files/Materi KPI Online/PMS_Admin_Guide_v1.pdf" target="_blank">PMS Administrator Guidee </a></li>
+						</ul>
+					</li>
+					<li><a href="ResumeRJPP.aspx">Resume RJPP RU IV 2016-2020</a></li>
+                    <li><a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Ketentuan Perjalanan Dinas Pertamina<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="Files/ir/Daftar_Hotel_Rujukan_Pertamina_Th_2016_update09022016 20160523100824.xls" target="_blank">Daftar Hotel</a></li>
+							<li><a href="Files/ir/SK-Biaya Transportasi Perjalanan Dinas Mimimize.pdf" target="_blank">SK Biaya Transport Perjalanan Dinas</a></li>
+							<li><a href="Files/ir/sidemenu-break km transportasi darat SPD_Clp.jpg" target="_blank">Daftar sidemenu-break</a></li>
+						</ul>
+					</li>
+
+                    <li><a href="http://ptmkpwab81.pertamina.com/komet/login.aspx" target="_blank">Knowledge Management System </a></li>
+                    <li><a href="http://www.pertamina.com/beta/kurs/files/" target="_blank">Kurs. Pertamina.com </a></li>
+                    <li><a href="gsi_at_si.aspx">Materi Training GSI, AT, & SI </a></li>
+                    <li><a href="drawImage.aspx?c=S&id=1430">Nilai Kalor Ref. Oil & Gas </a></li>
+                    <li><a href="Files/Excel Automatic OME_RU IV CIlacap.xlsm" target="_blank">OME </a></li>			
+                    <li><a href="Files/PCT-Fix.pdf" target="_blank">Pedoman PCT </a></li>			
+                    <li><a href="Pengumuman.aspx?id=6404">Pemberitahuan Proxy Server Baru </a></li>
+                    <li><a href="Gosip.aspx?id=4488" target="_blank">Penggunaan Channel Radio saat Emergency </a></li>
+										<li><a href="Files/peraturanGosip.pdf" target="_blank">Peraturan Pengisian Gosip  </a></li>
+										<li><a href="Files/PERTAMINA_RU_IV_HSSE_WAYS.pdf" target="_blank">PERTAMINA HSSE WAYS</a></li>
+                    <li><a href="http://simops.pertamina.com:84/SDM/IR/materi-sosialisasi-final-cilacap.rar" target="_blank">PPIP </a></li>
+                    <li><a href="http://simops.pertamina.com:84/upload/Files/PKB_V_PER%202015-2017.pdf" target="_blank">PKB 2015-2017 </a></li>
+                    <li><a href="Files/RencanaTalkgroupBaru201510.pptx" target="_blank">Rencana Talkgroup HT Baru </a></li>
+                    <li><a href="Files/USER_IMAGES/RAM.png" target="_blank">Risk Assesment Matrix </a></li>
+									<li><a href="http://ptmkpwebapp05.pertamina.com/mqr/tp.asp" target="_blank">SAP Online Reference </a></li>
+                    <li><a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Seputar GCG <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="Files/Aturan_Compliance_th_2009_2010.pdf" target="_blank">Aturan Implementasi GCG </a></li>
+							<li><a href="Files/1. Presentasi Boundary KPI GCG 2013 - Training GCG 2013.ppt" target="_blank">Presentasi Boundary KPI GCG 2013 </a></li>
+							<li><a href="Files/5. Presentasi Code of Conduct 2013 - Training GCG 2013.ppt" target="_blank">Presentasi Code of Conduct 2013</a></li>
+							<li><a href="Files/6. Presentasi Gratifikasi 2013 - Training GCG 2013.ppt" target="_blank">Presentasi Gratifikasi 2013</a></li>
+						</ul>
+					</li>
+		<li><a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Sustainability Report <b class="caret"></b> </a>
+						<ul class="dropdown-menu">
+							<li><a href="Files/SustainabilityReport_2016.pdf" target="_blank">SR 2016 </a></li>
+							<li><a href="Files/SustainabilityReport_2017.pdf" target="_blank">SR 2017 </a></li>
+
+						</ul>
+		</li>
+                    <li><a href="http://simops.pertamina.com:84/Upload/Files/Cara_upload_dowload_aset_pengetahuan_dan_update_my_site_di_portal_KOMET.pdf" target="_blank">Upload, Download, & MySite KOMET </a></li>
+					<li><a href="Files/UUNo1-1970_kes.pdf" target="_blank">UU Keselamatan Kerja </a></li>
+				</ul>
+			</li>
+
+			<li>
+				<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Profile<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Organisasi Dasar RU IV</a>
+					</li>
+					<li><a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Company Profile</a>
+					</li>
+					<li><a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Safety Induction</a>
+					</li>
+					<li><a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Corporate Brand</a>
+					</li>
+					<li><a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Corporate Identity</a>
+					</li>
+				</ul>
+			</li>
+
+
+			<li>
+				<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Report<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Daily <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="LapSS.aspx">Shift Superintendent</a></li>
+							<li><a href="LapYieldProduct.aspx">Yield Product</a></li>
+							<li><a href="LapSecurity.aspx">Security</a></li>
+							<li><a href="LapISPS_PortTime.aspx">Port Time</a></li>
+                            <li><a href="LapShiftHandover.aspx">Shift Handover</a></li>
+						</ul>
+					</li>
+			        <!--		
+                    <li>
+						<a href="LogBookBackup.aspx">Backup Server & Database </a>
+					</li>-->
+					<li>
+						<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">SMS Broadcast<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="CCAMobile.aspx">Culture Change Agent</a></li>
+                            <li><a href="LLKKMobile.aspx">Emergency</a></li>
+                            <li><a href="SSMobile.aspx">Shift Superintendent</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul><!-- /.navbar-nav -->
+	        	<div class="clearfix"></div>				
+	            </div><!-- /.nav-outer -->
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.nav-bg-class -->
+        </div><!-- /.navbar-default -->
+    </div><!-- /.container-class -->
+
+</div><!-- /.header-nav -->
+
+<!-- ============================================== NAVBAR : END ============================================== -->
+</header>
+
+<!-- ============================================== HEADER : END ============================================== -->
+<div class="body-content" id="top-banner-and-menu">
+	<!-- ========================================== SECTION – HERO ========================================= -->
+			
+<div id="hero" class="home-page-slider4">
+	<div id="owl-main" class="owl-carousel silder2 owl-inner-nav owl-ui-sm">
+	
+  
+             	
+ <div class="item" style="background-image: url(http://simops.pertamina.com:85/assets/images/sliders/resolusi_prod_3.jpg);">
+  <div class="container-fluid">
+     <div class="caption vertical-center text-left">
+		<div class="big-text fadeInDown-1"> </div>
+	  </div><!-- /.caption -->
+  </div><!-- /.container-fluid -->
+</div><!-- /.item -->
+<div class="item" style="background-image: url(http://simops.pertamina.com:85/assets/images/sliders/MKP-simops-1-rev-1.jpg);">
+  <div class="container-fluid">
+     <div class="caption vertical-center text-left">
+		<div class="big-text fadeInDown-1"> </div>
+	  </div><!-- /.caption -->
+  </div><!-- /.container-fluid -->
+</div><!-- /.item -->
+<div class="item" style="background-image: url(http://simops.pertamina.com:85/assets/images/sliders/MKP-simops-2-rev-1.jpg);">
+  <div class="container-fluid">
+     <div class="caption vertical-center text-left">
+		<div class="big-text fadeInDown-1"> </div>
+	  </div><!-- /.caption -->
+  </div><!-- /.container-fluid -->
+</div><!-- /.item -->
+<div class="item" style="background-image: url(http://simops.pertamina.com:85/assets/images/sliders/kilang-dan-ho.jpg);">
+  <div class="container-fluid">
+     <div class="caption vertical-center text-left">
+		<div class="big-text fadeInDown-1"> </div>
+	  </div><!-- /.caption -->
+  </div><!-- /.container-fluid -->
+</div><!-- /.item -->
+<div class="item" style="background-image: url(http://simops.pertamina.com:85/assets/images/sliders/KEHANDALAN.jpg);">
+  <div class="container-fluid">
+     <div class="caption vertical-center text-left">
+		<div class="big-text fadeInDown-1"> </div>
+	  </div><!-- /.caption -->
+  </div><!-- /.container-fluid -->
+</div><!-- /.item -->
+<div class="item" style="background-image: url(http://simops.pertamina.com:85/assets/images/sliders/PROFIT-MARGIN.jpg);">
+  <div class="container-fluid">
+     <div class="caption vertical-center text-left">
+		<div class="big-text fadeInDown-1"> </div>
+	  </div><!-- /.caption -->
+  </div><!-- /.container-fluid -->
+</div><!-- /.item -->
+<div class="item" style="background-image: url(http://simops.pertamina.com:85/assets/images/sliders/HSSE.jpg);">
+  <div class="container-fluid">
+     <div class="caption vertical-center text-left">
+		<div class="big-text fadeInDown-1"> </div>
+	  </div><!-- /.caption -->
+  </div><!-- /.container-fluid -->
+</div><!-- /.item -->
+<div class="item" style="background-image: url(http://simops.pertamina.com:85/assets/images/sliders/8prioritas.jpg);">
+  <div class="container-fluid">
+     <div class="caption vertical-center text-left">
+		<div class="big-text fadeInDown-1"> </div>
+	  </div><!-- /.caption -->
+  </div><!-- /.container-fluid -->
+</div><!-- /.item -->
+<div class="item" style="background-image: url(http://simops.pertamina.com:85/assets/images/sliders/BroadcastVisiRU4.jpg);">
+  <div class="container-fluid">
+     <div class="caption vertical-center text-left">
+		<div class="big-text fadeInDown-1"> </div>
+	  </div><!-- /.caption -->
+  </div><!-- /.container-fluid -->
+</div><!-- /.item -->
+<div class="item" style="background-image: url(http://simops.pertamina.com:85/assets/images/sliders/OHPromotion_R3.jpg);">
+  <div class="container-fluid">
+     <div class="caption vertical-center text-left">
+		<div class="big-text fadeInDown-1"> </div>
+	  </div><!-- /.caption -->
+  </div><!-- /.container-fluid -->
+</div><!-- /.item -->
+
+
+
+
+
+
+	</div><!-- /.owl-carousel -->
+	<div class="customNavigation">
+		<div class="container">
+				
+				<div class="controls clearfix hidden-xs">
+					<a href="#" data-target=".silder2" class="btn btn-primary pull-left owl-prev"><i class="fa fa-angle-left"></i></a>
+					<a href="#" data-target=".silder2" class="btn btn-primary pull-right owl-next"><i class="fa fa-angle-right"></i></a>
+				</div><!-- /.controls -->
+				
+			</div>
+	</div>
+</div>
+			
+<!-- ========================================= SECTION – HERO : END ========================================= -->	
+
+<div class="body-content outer-top-xs" id="top-banner-and-menu">
+	<div class="container">
+		<div class="row">
+            <!-- #============================================== SIDEBAR ============================================== -->	
+	<div class="col-md-3 col-sm-12 col-xs-12 sidebar sidebar-home">
+<!-- ================================== DASHBOARD ================================== -->
+<div class="sidemenu-break"> 
+<button type="button" data-toggle="collapse" data-target="#demo0" class="btn btn-lg btn-collapse"> DASHBOARD </button>
+<div id="demo0" class="collapse in">
+<div class="side-menu animate-dropdown outer-bottom-xxs"  >       
+						<nav class="yamm megamenu-horizontal collapse-content" role="navigation">
+							<ul class="nav">
+                   <li class="dropdown menu-item">
+									<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown"> Dashboard RU-IV <i class="fa fa-angle-right arrow"></i></a>
+												<ul class="dropdown-menu mega-menu">
+													<li class="yamm-content">
+														<div class="row">
+															<div class="col-sm-12 col-md-12">
+																<ul class="links list-unstyled">  
+																	<li><a href="#" target="_blank">Pencapaian 8 Prioritas</a></li>
+																	<li><a href="#" target="_blank">HSE Perfomance Indicator</a></li>
+																	<li><a href="#" target="_blank">Equipment Readiness</a></li>
+																	<li><a href="#" target="_blank">Highlight RU-IV Cilacap</a></li>
+																</ul>
+															</div><!-- /.col -->
+														</div><!-- /.row -->
+													</li><!-- /.yamm-content -->                    
+												</ul><!-- /.dropdown-menu -->     
+								</li><!-- /.menu-item -->
+			<li class="dropdown menu-item">
+				<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Monitoring Tangki (Tank Vision) <i class="fa fa-angle-right arrow"></i></a>
+				<ul class="dropdown-menu mega-menu">
+					<li class="yamm-content">
+						<div class="row">
+							<div class="col-sm-12 col-md-12">
+								<ul class="links list-unstyled">  
+									<li><a href="#" target="_blank">Area 70</a></li>
+									<li class="dropdown menu-item dropdown-submenu" ><a class ="multiple" href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Area 60 <i class="fa fa-angle-right arrow"></i></a><ul class="dropdown-menu mega-menu dropdown-submenu-content">
+					<li class="yamm-content">
+						<div class="row">
+							<div class="col-sm-12 col-md-12">
+								<ul class="links list-unstyled">  
+									<li><a href="#" target="_blank">DC-01</a></li>
+									<li><a href="#" target="_blank">DC-02</a></li>
+									<li><a href="#" target="_blank">DC-03</a></li>
+									<li><a href="#" target="_blank">DC-04</a></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</li>
+									<li><a href="#" target="_blank">Area Paraxylene</a></li>
+									<li><a href="#" target="_blank">Area LOC III</a></li>
+								</ul>
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</li><!-- /.yamm-content -->                    
+				</ul><!-- /.dropdown-menu -->      
+			</li><!-- /.menu-item -->
+
+
+								<!-- ================= MEGAMENU VERTICAL ====================== -->
+							</ul><!-- /.nav -->
+						</nav><!-- /.megamenu-horizontal -->
+    </div><!-- /.side-menu -->
+</div>
+</div>
+<br>
+<!-- ================================== DASHBOARD ================================== -->
+                <!-- ================================== Menu MAIN APPS ================================== -->
+
+<div class="sidemenu-break"> 
+<button type="button" data-toggle="collapse" data-target="#demo1" class="btn btn-lg btn-collapse"> MAIN APPS </button>
+<div id="demo1" class="collapse in">
+<div class="side-menu animate-dropdown outer-bottom-xxs">     
+	<nav class="yamm megamenu-horizontal collapse-content" role="navigation">
+		<ul class="nav">
+			<li class="dropdown menu-item">
+				<a href="http://ptmkpweb12app01.pertamina.com/ISRSCilacap/login.aspx?ReturnUrl=%2fISRSCilacap%2f" target="_blank">ISRS</a>
+			</li><!-- /.menu-item -->
+			<li><a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">LIMS  <i class="fa fa-angle-right arrow"></i></b></a>
+            <ul class="dropdown-menu mega-menu">
+				<li class="yamm-content">
+					<div class="row">
+						<div class="col-sm-12 col-md-12">
+							<ul class="links list-unstyled">  
+								<li><a href="http://simops.pertamina.com/LIMS" target="_blank">LIMS WEB</a></li>
+								<li><a href="files/QUERYLIMSselect/QUERYLIMS3264.application" target="_blank">LIMS Query</a></li>    
+								<li><a href="http://ptmkplims02.pertamina.com:8080/WebLIMS/index.htm" target="_blank">LIMS Labware</a></li>
+								<li><a href="http://ptmclpdc-webdev.pertamina.com/CIMS" target="_blank">CIMS</a></li>    
+							</ul>
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</li><!-- /.yamm-content -->                    
+			</ul><!-- /.dropdown-menu --> 
+                                                
+        </li><!-- /.menu-item -->
+            <li class="dropdown menu-item">
+				<a href="#/" target ="_blank">I-AM</a>
+			</li><!-- /.menu-item -->
+            <li class="dropdown menu-item">
+				<a href="http://ptmclpdc-webdev.pertamina.com/managementofchange/" target ="_blank">MOC Online</a>
+			</li><!-- /.menu-item -->
+            <li class="dropdown menu-item">
+				<a href="http://ptmclpdc-dev12.pertamina.com/pms5cargo/" target ="_blank">Port Time</a>
+			</li><!-- /.menu-item -->
+			<li class="dropdown menu-item">
+				<a href="http://ptmkpwab61.pertamina.com/ProcureToPay" target ="_blank">Procurement to Pay</a>
+			</li><!-- /.menu-item -->
+            <li class="dropdown menu-item">
+				<a href="http://ptmclpdc-webdev.pertamina.com:88/pelita/login.php" target="_blank">Reservasi Pelita Air</a>
+			</li>
+            <li class="dropdown menu-item">
+				<a href="http://intra.pertamina.com/roas" target = "_blank">ROAS</a>
+			</li><!-- /.menu-item -->
+			<li class="dropdown menu-item">
+				<a href="http://simops.pertamina.com:83/webqm/Account/Login.aspx?ReturnUrl=%2fwebqm%2fSTK%2fSTK.aspx" target ="_blank">STKP</a>
+			</li><!-- /.menu-item -->
+			<li class="dropdown menu-item">
+				<a href="http://simops.pertamina.com:83/sps/" target ="_blank">SPS</a>
+			</li><!-- /.menu-item -->
+			<li class="dropdown menu-item">
+				<a href="http://simops.pertamina.com:84/trackingSystem.html" target="_blank">T-Mont</a>
+			</li><!-- /.menu-item -->
+			<li class="dropdown menu-item">
+				<a href="http://simops.pertamina.com:84/8prioritasru4" target="_blank">8 Prioritas RU IV</a>
+			</li><!-- /.menu-item -->
+			<li class="dropdown menu-item">
+				<a href="http://simops.pertamina.com:84/LFE" target="_blank">Learning From Events (LFE)</a>
+			</li><!-- /.menu-item -->
+			<li class="dropdown menu-item">
+				<a href="http://simops.pertamina.com:84/EmployeeCoaching" target="_blank">Employee Coaching</a>
+			</li><!-- /.menu-item -->			
+            <li class="dropdown menu-item">
+				<a href="http://simops.pertamina.com:84/USDOnline/" target="_blank">UMK, SP3, dan Deklarasi</a>
+			</li><!-- /.menu-item -->
+            <li class="dropdown menu-item">
+				<a href="http://ptmclpdc-webdev.pertamina.com:88/WAM/" target="_blank">Cross Functional Meeting (CFM)</a>
+			</li><!-- /.menu-item -->
+												
+			<!-- ================= MEGAMENU VERTICAL ====================== -->
+		</ul><!-- /.nav -->
+	</nav><!-- /.megamenu-horizontal -->
+</div><!-- /.side-menu -->
+</div>
+</div>
+<br>
+
+              
+		        <!-- ================================== MAIN APPS : END ================================== -->
+                <!-- ================================== Menu Department ================================== -->
+<div class="sidemenu-break"> 
+<button type="button" data-toggle="collapse" data-target="#demo2" class="btn btn-lg collapsed btn-collapse"> DEPARTMENT</button>
+<div id="demo2" class="collapse">
+<div class="side-menu animate-dropdown outer-bottom-xxs">       
+	<nav class="yamm megamenu-horizontal collapse-content" role="navigation">
+		<ul class="nav">
+            <li class="dropdown menu-item">
+                <a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">EngDev <i class="fa fa-angle-right arrow"></i></a>
+                <ul class="dropdown-menu mega-menu">
+                <li class="yamm-content">
+	                <div class="row">
+		                <div class="col-sm-12 col-md-12">
+			                <ul class="links list-unstyled">  
+				                <li><a href="http://10.54.54.10/psi/" target="_blank">Process Safety Information</a></li>    
+				                <!--<li><a href="index.php?page=category">Enjiniring & Development - Quality Management</a></li>   -->
+			                </ul>
+		                </div><!-- /.col -->
+	                </div><!-- /.row -->
+                </li><!-- /.yamm-content -->                    
+                </ul><!-- /.dropdown-menu -->      
+            </li><!-- /.menu-item -->
+            <li class="dropdown menu-item">
+				<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Finance <i class="fa fa-angle-right arrow"></i></a>
+				<ul class="dropdown-menu mega-menu">
+					<li class="yamm-content">
+						<div class="row">
+							<div class="col-sm-12 col-md-12">
+								<ul class="links list-unstyled">  
+									<li><a href="http://simops.pertamina.com/finance/" target="_blank">Finance</a></li>
+									<li><a href="http://simops.pertamina.com/finance/deklarasi.aspx" target="_blank">Deklarasi</a></li> 
+								</ul>
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</li><!-- /.yamm-content -->                    
+				</ul><!-- /.dropdown-menu -->      
+			</li><!-- /.menu-item -->
+
+        	<li class="dropdown menu-item">
+				<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">HR <i class="fa fa-angle-right arrow"></i></a>
+				<!-- ================================== MEGAMENU VERTICAL ================================== -->
+				<ul class="dropdown-menu mega-menu">
+					<li class="yamm-content">
+						<div class="row">
+							<div class="col-sm-12 col-md-12">
+								<ul class="links list-unstyled">  
+									<li><a href="http://simops.pertamina.com/absensi/mitra/" target ="_blank">Absensi Finger Print - Mitra Kerja/LS</a></li>  
+                                    <li><a href="http://simops.pertamina.com/absensi/" target ="_blank">Absensi Finger Print - Pekerja</a></li>
+                                    <li><a href="http://ptmkpwebapp06.pertamina.com/sdmonline/" target ="_blank">HR Online</a></li>
+                                    <li><a href="http://ptmclpdc-webdev.pertamina.com/SDM/" target ="_blank">HR Unit</a></li>
+                                    <li><a href="http://simops.pertamina.com/cuti/" target ="_blank">Monitoring Cuti</a></li>
+                                    <li><a href="http://ptmclpdc-webdev.pertamina.com/SizeM/" target ="_blank">Pengukuran Perlengkapan Kerja </a></li>
+                                    <li><a href="http://ptmclpdc-webdev.pertamina.com:88/pelita/" target ="_blank">Reservasi Pelita Air</a></li>  
+                                    <li><a href="http://ptmclpdc-webdev.pertamina.com/rdp/" target ="_blank">Alamat RDP</a></li>  
+                                    <li><a href="RDP2.aspx" >RDP - Rangking</a></li>
+                                    <li><a href="AlokasiRDP2.aspx">RDP  - Rencana Alokasi</a></li>        
+                                    <li><a href="RDPManajemen2.aspx">RDP - Management</a></li>        
+								</ul>
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</li><!-- /.yamm-content -->                    
+				</ul><!-- /.dropdown-menu -->
+											<!-- ================================== MEGAMENU VERTICAL ================================== -->            
+        </li><!-- /.menu-item -->
+        <li class="dropdown menu-item">
+			<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">HSE <i class="fa fa-angle-right arrow"></i></a>
+			<ul class="dropdown-menu mega-menu">
+				<li class="yamm-content">
+					<div class="row">
+						<div class="col-sm-12 col-md-12">
+							<ul class="links list-unstyled">  
+								<li><a href="http://simops.pertamina.com/sika" target="_blank">SIKA</a></li>
+								<li><a href="http://simops.pertamina.com/webtcp"  target="_blank">TCP Monitoring System</a></li>    
+								<li><a href="http://simops.pertamina.com/webhazard"  target="_blank">Monitoring Hazard</a></li>
+								<li><a href="http://simops.pertamina.com:88/KKLL_3file/login.asp"  target="_blank">Gudang HSE</a></li>
+								<li><a href="http://simops.pertamina.com:83/Insurance/"  target="_blank">Insurance Tracking System</a></li>
+								<li><a href="http://simops.pertamina.com/SMT/"  target="_blank">SMT Refinery Unit IV</a></li>
+								<li><a href="http://simops.pertamina.com:84/LFE/"  target="_blank">Pengamatan Keselamatan Kerja</a></li>  
+								<li><a href="http://simops.pertamina.com:84/Laporan/LLKKMobile.aspx"  target="_blank">SMS Emergency</a></li>
+								<li><a href="http://simops.pertamina.com:83/HSE/"  target="_blank">Health Safety & Environment</a></li>
+								<li><a href="http://ptmclpdc-webdev.pertamina.com/Testhse"  target="_blank">Web HSE Dev</a></li>  
+								<li><a href="http://10.54.54.10/hse/peminjaman/"  target="_blank">Peminjaman Alat</a></li>        
+							</ul>
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</li><!-- /.yamm-content -->                    
+			</ul><!-- /.dropdown-menu -->            
+        </li><!-- /.menu-item -->
+        <li class="dropdown menu-item">
+			<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">IT <i class="fa fa-angle-right arrow"></i></a>
+			<ul class="dropdown-menu mega-menu">
+				<li class="yamm-content">
+					<div class="row">
+						<div class="col-sm-12 col-md-12">
+							<ul class="links list-unstyled">  
+								<li><a href="http://ptmclpdc02-app.pertamina.com/iTooLs" target="_blank">iTools</a></li>    
+								<li><a href="http://servicedesk.pertamina.com" target="_blank">Service Desk CSS</a></li>
+								<li><a href="http://ptmclpdc02-app.pertamina.com:88/sik/perbaikan/PERBAIKANlist.asp" target="_blank">IT - Komputer (PC, Laptop, Printer)</a></li>
+								<li><a href="http://simops.pertamina.com:88/sik/perbaikan/perbaikan_new" target="_blank">IT - Komunikasi (Jaringan Data, Internet, Telepon)</a></li>
+								<li><a href="http://simops.pertamina.com:88/sik/perbaikan/login.asp" target="_blank">Teknisi - Komputer</a></li>    
+								<li><a href="http://simops.pertamina.com:88/SIK/" target="_blank">IT UP Cilacap Area - Operasi Komputer</a></li>
+								<li><a href="http://10.54.16.200" target="_blank">IT UP Cilacap Area - Operasi Komunikasi</a></li>
+								<li><a href="SystemUpdate.aspx" target="_blank">System Update</a></li>      
+							</ul>
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</li><!-- /.yamm-content -->                    
+			</ul><!-- /.dropdown-menu -->            
+          </li><!-- /.menu-item -->
+          <li class="dropdown menu-item">
+				<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Legal <i class="fa fa-angle-right arrow"></i></a>
+				<ul class="dropdown-menu mega-menu">
+					<li class="yamm-content">
+						<div class="row">
+							<div class="col-sm-12 col-md-12">
+								<ul class="links list-unstyled">  
+									<li><a href="http://simops.pertamina.com:84/weblegal/" target ="_blank">Legal Counsel - Web Legal</a></li>    
+									<li><a href="http://ptmclpdc-webdev.pertamina.com/kontrakonline/" target ="_blank">Legal Counsel - Review Kontrak Online</a></li>
+									<li><a href="http://ptmkpwab81.pertamina.com/weblegal/" target="_blank">Legal Counsel - Web Legal Pusat</a></li>    
+								</ul>
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</li><!-- /.yamm-content -->                    
+				</ul><!-- /.dropdown-menu -->      
+			</li><!-- /.menu-item -->
+
+			<li class="dropdown menu-item">
+				<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Marine <i class="fa fa-angle-right arrow"></i></a>
+				<!-- ================================== MEGAMENU VERTICAL ================================== -->
+				<ul class="dropdown-menu mega-menu">
+					<li class="yamm-content">
+							<div class="row">
+								<div class="col-sm-12 col-md-12">
+									<ul class="links list-unstyled">  
+										<li><a href="http://simops.pertamina.com/pelsus" target="_blank">Pelabuhan Khusus</a></li>       
+									</ul>
+								</div><!-- /.col -->
+							</div><!-- /.row -->
+					</li><!-- /.yamm-content -->                    
+				</ul><!-- /.dropdown-menu -->
+				<!-- ================================== MEGAMENU VERTICAL ================================== -->           
+            </li><!-- /.menu-item -->
+            <li class="dropdown menu-item">
+				<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">ME <i class="fa fa-angle-right arrow"></i></a>
+				<ul class="dropdown-menu mega-menu">
+					<li class="yamm-content">
+						<div class="row">
+							<div class="col-sm-12 col-md-12">
+								<ul class="links list-unstyled">  
+									<li><a href="http://ptmclpdc-webdev.pertamina.com/KontrakME" target="_blank">Kontrak ME</a></li>
+                                    <li><a href="http://ptmclpdc-webdev.pertamina.com/MEnote" target="_blank">Report ME</a></li>    
+									<li><a href="http://simops.pertamina.com:88/FASUM/perbaikan2/FASUM_PERBAIKANlist.asp" target="_blank">General Maintenance</a></li>   
+								</ul>
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</li><!-- /.yamm-content -->                    
+				</ul><!-- /.dropdown-menu -->            
+            </li><!-- /.menu-item -->
+            <li class="dropdown menu-item">
+				<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Mgr GA <i class="fa fa-angle-right arrow"></i></a>
+				<ul class="dropdown-menu mega-menu">
+					<li class="yamm-content">
+						<div class="row">
+							<div class="col-sm-12 col-md-12">
+								<ul class="links list-unstyled">  
+									<li><a href="http://simops.pertamina.com:83/security/" target="_blank">Biodata Security</a></li> 
+                                    <li><a href="http://simops.pertamina.com:84/stageholder/" target="_blank">Stake Holder</a></li>    
+								</ul>
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</li><!-- /.yamm-content -->                    
+				</ul><!-- /.dropdown-menu -->            
+            </li><!-- /.menu-item -->
+            <li class="dropdown menu-item">
+					<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">MPS <i class="fa fa-angle-right arrow"></i></a>
+					<ul class="dropdown-menu mega-menu">
+						<li class="yamm-content">
+							<div class="row">
+								<div class="col-sm-12 col-md-12">
+									<ul class="links list-unstyled"> 
+										<li><a href="http://10.54.54.10/" target="_blank">Maintenance Planning & Schedulling</a></li>
+										<li><a href="#" target="_blank">Grafik PAF</a></li>
+										<li><a href="#" target="_blank">Material Surplus</a></li>
+										<li><a href="#" target="_blank">Peralatan Kilang</a></li> 
+										<li><a href="#" target="_blank">Peralatan Bermasalah</a></li>
+										<li><a href="#" target="_blank">Peta Vibrasi</a></li>  
+									</ul>
+								</div><!-- /.col -->
+							</div><!-- /.row -->
+						</li><!-- /.yamm-content -->                    
+					</ul><!-- /.dropdown-menu -->      
+				</li><!-- /.menu-item -->
+                                            
+				<li class="dropdown menu-item">
+					<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">OPI <i class="fa fa-angle-right arrow"></i></a>
+					<ul class="dropdown-menu mega-menu">
+						<li class="yamm-content">
+							<div class="row">
+								<div class="col-sm-12 col-md-12">
+									<ul class="links list-unstyled">  
+										<li><a href="simops.pertamina.com/OPI/" target="_blank">Operational Performance Improvement (OPI)</a></li> 
+										<li><a href="http://10.54.2.211/Survey2018" target="_blank">Survey RU IV 2018</a></li>        
+									</ul>
+								</div><!-- /.col -->
+							</div><!-- /.row -->
+						</li><!-- /.yamm-content -->                    
+					</ul><!-- /.dropdown-menu -->      
+				</li><!-- /.menu-item -->
+                <li class="dropdown menu-item">
+					<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">MEDICAL RU IV <i class="fa fa-angle-right arrow"></i></a>
+					<ul class="dropdown-menu mega-menu">
+						<li class="yamm-content">
+							<div class="row">
+								<div class="col-sm-12 col-md-12">
+									<ul class="links list-unstyled">  
+										<li><a href="http://simops.pertamina.com/pemanggilanmcu/daftar_panggilan.aspx" target="_blank">Daftar Pemanggilan MCU</a></li> 
+                                        <li><a href="http://simops.pertamina.com/Simedical/" target="_blank">Hasil Pemeriksaan MCU Pekerja</a></li>
+                                        <li><a href="http://10.1.8.96/hiper" target="_blank">HIPER</a></li>    
+										<li><a href="http://simops.pertamina.com/donordarah/" target="_blank">Informasi Donor Darah</a></li>
+                                        <li><a href="http://10.54.251.222/" target="_blank">Pertamina Hospital Cilacap</a></li>    
+                                        <li><a href="http://simops.pertamina.com/SDM/SimulasiFramingham/" target="_blank">Simulasi Framingham</a></li>
+									</ul>
+								</div><!-- /.col -->
+							</div><!-- /.row -->
+						</li><!-- /.yamm-content -->                    
+					</ul><!-- /.dropdown-menu -->            
+                </li><!-- /.menu-item -->
+
+                <li class="dropdown menu-item">
+					<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Procurement <i class="fa fa-angle-right arrow"></i></a>
+					<ul class="dropdown-menu mega-menu">
+						<li class="yamm-content">
+							<div class="row">
+								<div class="col-sm-12 col-md-12">
+									<ul class="links list-unstyled">  
+										<li><a href="http://ptmkpwebapp01.pertamina.com/MaterialKatalog/login.aspx" target = "_blank">Katalog - Material Katalog</a></li>
+										<li><a href="http://10.1.32.26/materialkatalog/files/" target = "_blank">Katalog - Material Katalog Lama</a></li>    
+										<li><a href="http://ptmkpwebapp02.pertamina.com/PMKatalog/login.aspx" target = "_blank">Katalog - PM Katalog</a></li>
+										<li><a href="http://simops.pertamina.com:84/MDPur/"  target = "_blank">Monitoring Data Purchasing</a></li>
+                                        <li><a href="http://ptmclpdc-webdev.pertamina.com/webprocurement/" target="_blank">Procurement</a></li> 
+										<li><a href="#" target="_blank">Sisa Material Direct Charge RU IV </a></li> 
+									</ul>
+								</div><!-- /.col -->
+							</div><!-- /.row -->
+						</li><!-- /.yamm-content -->                    
+					</ul><!-- /.dropdown-menu -->            
+             </li><!-- /.menu-item -->
+
+				<li class="dropdown menu-item">
+					<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">QM <i class="fa fa-angle-right arrow"></i></a>
+					<ul class="dropdown-menu mega-menu">
+						<li class="yamm-content">
+							<div class="row">
+								<div class="col-sm-12 col-md-12">
+									<ul class="links list-unstyled">  
+										<li><a href="http://simops.pertamina.com:84/upload/files/Temuan-IA-SMT-SMK3-26-29-Sept-2017-rev-0.xlsx" target="_blank">Temuan Audit Internal SMK3 & SMT</a></li>        
+									</ul>
+								</div><!-- /.col -->
+							</div><!-- /.row -->
+						</li><!-- /.yamm-content -->                    
+					</ul><!-- /.dropdown-menu -->      
+				</li><!-- /.menu-item -->
+				
+            <li class="dropdown menu-item">
+						<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Reliability <i class="fa fa-angle-right arrow"></i></a>
+						<ul class="dropdown-menu mega-menu">
+							<li class="yamm-content">
+								<div class="row">
+									<div class="col-sm-12 col-md-12">
+										<ul class="links list-unstyled">  
+											<li><a href="http://10.54.52.191:89/" target ="_blank">Reliability</a></li>
+											<li><a href="http://ptmclpdc-spfapp.pertamina.com/spfwc" target ="_blank">SmartPlant Fusion</a></li>
+										</ul>
+									</div><!-- /.col -->
+								</div><!-- /.row -->
+							</li><!-- /.yamm-content -->                    
+						</ul><!-- /.dropdown-menu -->      
+					</li><!-- /.menu-item -->
+                <li class="dropdown menu-item">
+					<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">RIA <i class="fa fa-angle-right arrow"></i></a>
+					<ul class="dropdown-menu mega-menu">
+						<li class="yamm-content">
+							<div class="row">
+								<div class="col-sm-12 col-md-12">
+									<ul class="links list-unstyled">  
+										<li><a href="http://simops.pertamina.com/SPID/" target="_blank">Refinery Internal Audit Cilacap</a></li>       
+									</ul>
+								</div><!-- /.col -->
+							</div><!-- /.row -->
+						</li><!-- /.yamm-content -->                    
+					</ul><!-- /.dropdown-menu -->      
+				</li><!-- /.menu-item -->
+                <li class="dropdown menu-item">
+				<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">RPO <i class="fa fa-angle-right arrow"></i></a>
+				<ul class="dropdown-menu mega-menu">
+					<li class="yamm-content">
+						<div class="row">
+							<div class="col-sm-12 col-md-12">
+								<ul class="links list-unstyled">  
+									<li><a href="http://simops.pertamina.com/sumren" target="_blank">Sumren</a></li>
+									<li><a href="http://simops.pertamina.com/saprodu" target="_blank">SAPRODU</a></li>    
+									<li><a href="http://simops.pertamina.com/WebRPO" target="_blank">Refinery Planning & Optimization</a></li>
+									<li><a href="http://10.54.24.18/vm/visualmanagement.application" target="_blank">Daily Profile Intake & Production RU IV</a></li>    
+								</ul>
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</li><!-- /.yamm-content -->                    
+				</ul><!-- /.dropdown-menu -->           
+                </li><!-- /.menu-item -->
+				<li class="dropdown menu-item">
+					<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">TA <i class="fa fa-angle-right arrow"></i></a>
+					<ul class="dropdown-menu mega-menu">
+						<li class="yamm-content">
+							<div class="row">
+								<div class="col-sm-12 col-md-12">
+									<ul class="links list-unstyled">  
+										<li class="hidden"><a href="http://10.54.2.118:10/tools/publik/tools_ws" target="_blank">Tools Workshop Pertamina RU IV</a></li>    
+										<li><a href="http://10.54.2.118:10/parex2018/" target="_blank">STOP UNIT PAREX 2018</a></li>
+										<li><a href="http://10.54.2.118/TA/" target="_blank">Turn Around Website</a></li>    
+									</ul>
+								</div><!-- /.col -->
+							</div><!-- /.row -->
+						</li><!-- /.yamm-content -->                    
+					</ul><!-- /.dropdown-menu -->      
+				</li><!-- /.menu-item -->
+										
+			<li class="dropdown menu-item">
+				<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Others <i class="fa fa-angle-right arrow"></i></a>
+				<ul class="dropdown-menu mega-menu">
+					<li class="yamm-content">
+						<div class="row">
+							<div class="col-sm-12 col-md-12">
+								<ul class="links list-unstyled">  
+									<li><a href="http://simops.pertamina.com:84/webbazma/" target="_blank">BAZMA</a></li>
+									<li><a href="http://simops.pertamina.com:84/SPP-PWK/" target="_blank">SPP.PWK</a></li>    
+								</ul>
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</li><!-- /.yamm-content -->                    
+				</ul><!-- /.dropdown-menu -->      
+			</li><!-- /.menu-item -->
+	   </ul><!-- /.nav -->
+
+	</nav><!-- /.megamenu-horizontal -->
+</div><!-- /.side-menu -->
+</div>
+</div>
+<br>
+
+
+                <!-- ================================== Department : END ================================== -->
+			    <!-- ================================== Menu LINKS ================================== -->
+                
+<div class="sidemenu-break"> 
+<button type="button" data-toggle="collapse" data-target="#demo" class="btn btn-lg  btn-collapse"> LINKS </button>
+<div id="demo" class="collapse in">
+<div class="side-menu animate-dropdown outer-bottom-xxs"  >       
+						<nav class="yamm megamenu-horizontal collapse-content" role="navigation">
+							<ul class="nav">
+                                <li class="dropdown menu-item">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Finance Operation</a>
+								</li><!-- /.menu-item -->
+                   <li class="dropdown menu-item">
+									<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">PrIMS <i class="fa fa-angle-right arrow"></i></a>
+												<ul class="dropdown-menu mega-menu">
+													<li class="yamm-content">
+														<div class="row">
+															<div class="col-sm-12 col-md-12">
+																<ul class="links list-unstyled">  
+																	<li><a href="http://10.54.2.211:88/prims2016/" target="_blank">PrIMS 2016</a></li>
+																	<li><a href="http://10.54.2.211:88/prims2015/" target="_blank">PrIMS 2015</a></li>
+																	<li><a href="http://10.54.2.211:88/prims_rfcc2016/" target="_blank">PrIMS RFCC</a></li>
+																</ul>
+															</div><!-- /.col -->
+														</div><!-- /.row -->
+													</li><!-- /.yamm-content -->                    
+												</ul><!-- /.dropdown-menu -->     
+								</li><!-- /.menu-item -->
+                                <li class="dropdown menu-item">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">RKAP 2 Online</a>
+								</li><!-- /.menu-item -->
+                                <li class="dropdown menu-item">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sistem Management Kinerja</a>
+								</li><!-- /.menu-item -->
+                                <li class="dropdown menu-item">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Training APPS</a>
+								</li>
+                <li class="dropdown menu-item">
+									<a href="http://ptmclpdc-webdev.pertamina.com/surveypelanggan/" target="_blank">SURVEY PELANGGAN RU IV</a>
+								</li>
+                <li class="dropdown menu-item">
+									<a href="http://intra.pertamina.com/" target="_blank">Intranet Pertamina</a>
+								</li>
+			<li class="dropdown menu-item">
+				<a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">Others RU <i class="fa fa-angle-right arrow"></i></a>
+				<ul class="dropdown-menu mega-menu">
+					<li class="yamm-content">
+						<div class="row">
+							<div class="col-sm-12 col-md-12">
+								<ul class="links list-unstyled">  
+									<li><a href="http://10.52.0.5/" target="_blank">RU II Dumai</a></li>
+									<li><a href="http://intra-ru3.pertamina.com/" target="_blank">RU III Plaju</a></li>
+									<li><a href="http://intra-ru5.pertamina.com:83/" target="_blank">RU V Balikpapan</a></li>
+									<li><a href="http://intra-ru6.pertamina.com/Intranet/Home/HomePage/Home.aspx" target="_blank">RU VI Balongan</a></li>
+									<li><a href="http://10.57.4.7/" target="_blank">RU VII Kasim</a></li>
+								</ul>
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</li><!-- /.yamm-content -->                    
+				</ul><!-- /.dropdown-menu -->      
+			</li><!-- /.menu-item -->
+
+								<!-- ================= MEGAMENU VERTICAL ====================== -->
+							</ul><!-- /.nav -->
+						</nav><!-- /.megamenu-horizontal -->
+    </div><!-- /.side-menu -->
+</div>
+</div>
+<br>
+			    <!-- ================================== LINKS : END ================================== -->
+                <!-- SOSIALISASI RU IV -->
+                
+<div class="sidemenu-break"> 
+<button type="button" data-toggle="collapse" data-target="#demo3" class="btn btn-lg  btn-collapse"> Kebijakan, Visi & Misi RU-IV </button>
+<div id="demo3" class="collapse in">
+	<div class="side-menu animate-dropdown outer-bottom-xxs">      
+		<nav class="yamm megamenu-horizontal collapse-content" role="navigation">
+			<ul class="nav">
+	            <li class="dropdown menu-item">
+	                        <a href="http://simops.pertamina.com:84/upload/files/VISI-RUIV.pdf" target="_blank"><span>Visi RU IV 2016</span></a>
+	            </li><!-- /.menu-item -->
+	            <li class="dropdown menu-item">
+	                        <a href="http://simops.pertamina.com:84/upload/Files/KebijakanSMTRUIV2018.pdf" target="_blank">Kebijakan SMT RU IV <img src="assets/images/new.gif"></a>
+	            </li><!-- /.menu-item -->
+	            <li class="dropdown menu-item">
+	                    <a href="http://simops.pertamina.com:84/upload/files/KomitmenSMT2018.pdf" target="_blank">KOMITMEN MANAJEMEN RU IV <img src="assets/images/new.gif"></a>
+	            </li><!-- /.menu-item -->
+	            <li class="dropdown menu-item">
+	                    <div class="containerkebijakan ">
+						    <a data-toggle="collapse" href="#collapse1">View all..</a>
+						      <div id="collapse1" class=" collapse">
+						<div class="side-menu animate-dropdown outer-bottom-xxs">      
+							<nav >
+								<ul>	       
+	            <li class="dropdown menu-item collapse-kebijakan">
+	                        <a href="http://simops.pertamina.com:84/upload/Files/Sertifikat-SMK3-RUIVth.2016.pdf" target="_blank">Sertifikat SMK3 RUIV 2016</a>											    
+	            </li><!-- /.menu-item -->
+	            <li class="dropdown menu-item collapse-kebijakan">
+	                        <a href="http://simops.pertamina.com:84/upload/Files/SertifikatSMTRUIV2016.pdf" target="_blank">Sertifikat SMT RU IV th.2016</a>											    
+	            </li><!-- /.menu-item -->
+	            <li class="dropdown menu-item collapse-kebijakan">
+	                        <a href="http://simops.pertamina.com:84/upload/Files/Cert_QMS_ISO_9001-2015.pdf" target="_blank">Sertifikat ISO 9001 : 2015 </a>											    
+	            </li><!-- /.menu-item -->
+	            <li class="dropdown menu-item collapse-kebijakan">
+	                        <a href="http://simops.pertamina.com:84/upload/Files/Cert_EMS_ISO-14001-2015.pdf" target="_blank">Sertifikat ISO 14001 : 2015 </a>											    
+	            </li><!-- /.menu-item -->
+	            <li class="dropdown menu-item collapse-kebijakan">
+	                    <a href="http://simops.pertamina.com:84/upload/files/Kebijakan Sistem MKP RU IV 2017.pdf" target="_blank">Kebijakan Sistem K3 RU IV 2017</a> 
+	            </li><!-- /.menu-item -->
+	            <li class="dropdown menu-item collapse-kebijakan">
+	                    <a href="http://simops.pertamina.com:84/upload/Files/Kebijakan-Sistem-MKP-RUIV2017.pdf" target="_blank">Kebijakan Sistem MKP RU IV</a> 
+	            </li><!-- /.menu-item -->
+	            <li class="dropdown menu-item collapse-kebijakan">
+	                    <a href="http://simops.pertamina.com:84/upload/Files/KEBIJAKAN LINGKUNGAN-2017tt.pdf" target="_blank">Kebijakan Pengelolaan Limbah</a>
+	            </li><!-- /.menu-item -->
+	            <li class="dropdown menu-item collapse-kebijakan">
+	                    <a href="http://simops.pertamina.com:84/upload/Files/Kebijakan_Hijau_2017.pdf" target="_blank">Kebijakan Hijau RU IV</a>
+	            </li><!-- /.menu-item -->
+	            <li class="dropdown menu-item collapse-kebijakan">
+	                    <a href="http://simops.pertamina.com:84/upload/Files/KEBIJAKAN%20K3%20PUSAT.pdf" target="_blank">Kebijakan K3LL & Pengamanan</a> 
+	            </li><!-- /.menu-item -->
+	            <li class="dropdown menu-item collapse-kebijakan">
+	                    <a href="http://simops.pertamina.com:84/upload/Files/KebijakanPengamananRUIV.pdf" target="_blank">Kebijakan Pengamanan RU IV <img src="assets/images/new.gif"></a>											    
+	            </li><!-- /.menu-item -->
+	            <li class="dropdown menu-item collapse-kebijakan">
+	                    <a href="http://simops.pertamina.com:84/upload/Files/Kebijakan CSR RU IV tahun 2017.pdf" target="_blank">Kebijakan CSR RU IV 2017</a>											    
+	            </li><!-- /.menu-item -->
+	            <li class="dropdown menu-item collapse-kebijakan">
+	                    <a href="http://simops.pertamina.com:84/upload/Files/Kebijakan Pencegahan & Penanggulangan HIV AIDS RU IV 2017.pdf" target="_blank">Kebijakan Penanggulangan HIV</a>											    
+	            </li><!-- /.menu-item -->
+						        </ul>
+						    </nav>
+						      </div>
+						</div>
+	            </li><!-- /.menu-item -->	          
+	        </ul>
+	    </nav>
+	</div>
+</div>
+</div>
+<br>        
+
+
+	</div><!-- /.sidemenu-holder -->
+            <!-- #============================================== SIDEBAR : END ============================================== -->
+
+             
+      
+
+<!-- UcapanModal -->
+	<div class="modal fade" id="ucapanModal" tabindex="-1" role="dialog" aria-labelledby="ucapanModalLabel" data-backdrop="static">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="lblUcapanKepada">Beri Ucapan</h4>
+				</div>
+				<div class="modal-body">
+					
+						<div class="form-group">
+							  <input type="hidden" class="form-control" id="txtNopek">
+						</div>
+						<div class="form-group">
+							<textarea class="form-control" rows="3" id="txtUcapan"></textarea>
+						</div>
+				
+                      <div class="col-sm-10">
+                        <span class="text-danger" id="msgInfo"></span>
+                    </div>
+				</div>
+				<div class="modal-footer">
+					<a href="#" type="button" class="btn btn-danger" data-dismiss="modal">Batal</a>
+					<a type="button" id="btnKirim" class="btn btn-success">Kirim</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div class="modal fade" id="mdlPopUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Information</h4>
+				</div>
+				<div class="modal-body">
+    				<div class="form-horizontal">
+						<div class="form-group">
+	              	        <img src="assets/images/img_login_survey.jpg" />
+                        </div>
+                    </div>
+				  <div class="form-horizontal">
+					  
+			    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+ <!-- Modal HTML -->
+    <div id="mdlEmis" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Content will be loaded here from "remote.php" file -->
+            </div>
+        </div>
+    </div>
+
+    <form name="aspnetForm" method="post" action="default.aspx" id="aspnetForm">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTM4MTE5MDk0MA9kFgJmD2QWDgIDDw8WAh4HVmlzaWJsZWhkZAIFDw8WAh4EVGV4dAVBPGEgaHJlZj0iIyIgZGF0YS10b2dnbGU9Im1vZGFsIiBkYXRhLXRhcmdldD0iI21kbExvZ2luIj5Mb2dpbjwvYT5kZAIHDw8WAh8BZWRkAgkPDxYCHwEFUTxpIGNsYXNzPSJmYSBmYS1nbG9iZSI+PC9pPiAzNiB1c2VyIG9ubGluZSB8IDxpIGNsYXNzPSJmYSBmYS11c2VyIj48L2k+IDAgbWVtYmVyc2RkAg0PZBYCZg8WAh8BBfEaPGRpdiBjbGFzcz0iaXRlbSIgc3R5bGU9ImJhY2tncm91bmQtaW1hZ2U6IHVybChodHRwOi8vc2ltb3BzLnBlcnRhbWluYS5jb206ODUvYXNzZXRzL2ltYWdlcy9zbGlkZXJzL3Jlc29sdXNpX3Byb2RfMy5qcGcpOyI+DQogIDxkaXYgY2xhc3M9ImNvbnRhaW5lci1mbHVpZCI+DQogICAgIDxkaXYgY2xhc3M9ImNhcHRpb24gdmVydGljYWwtY2VudGVyIHRleHQtbGVmdCI+DQoJCTxkaXYgY2xhc3M9ImJpZy10ZXh0IGZhZGVJbkRvd24tMSI+IDwvZGl2Pg0KCSAgPC9kaXY+PCEtLSAvLmNhcHRpb24gLS0+DQogIDwvZGl2PjwhLS0gLy5jb250YWluZXItZmx1aWQgLS0+DQo8L2Rpdj48IS0tIC8uaXRlbSAtLT4NCjxkaXYgY2xhc3M9Iml0ZW0iIHN0eWxlPSJiYWNrZ3JvdW5kLWltYWdlOiB1cmwoaHR0cDovL3NpbW9wcy5wZXJ0YW1pbmEuY29tOjg1L2Fzc2V0cy9pbWFnZXMvc2xpZGVycy9NS1Atc2ltb3BzLTEtcmV2LTEuanBnKTsiPg0KICA8ZGl2IGNsYXNzPSJjb250YWluZXItZmx1aWQiPg0KICAgICA8ZGl2IGNsYXNzPSJjYXB0aW9uIHZlcnRpY2FsLWNlbnRlciB0ZXh0LWxlZnQiPg0KCQk8ZGl2IGNsYXNzPSJiaWctdGV4dCBmYWRlSW5Eb3duLTEiPiA8L2Rpdj4NCgkgIDwvZGl2PjwhLS0gLy5jYXB0aW9uIC0tPg0KICA8L2Rpdj48IS0tIC8uY29udGFpbmVyLWZsdWlkIC0tPg0KPC9kaXY+PCEtLSAvLml0ZW0gLS0+DQo8ZGl2IGNsYXNzPSJpdGVtIiBzdHlsZT0iYmFja2dyb3VuZC1pbWFnZTogdXJsKGh0dHA6Ly9zaW1vcHMucGVydGFtaW5hLmNvbTo4NS9hc3NldHMvaW1hZ2VzL3NsaWRlcnMvTUtQLXNpbW9wcy0yLXJldi0xLmpwZyk7Ij4NCiAgPGRpdiBjbGFzcz0iY29udGFpbmVyLWZsdWlkIj4NCiAgICAgPGRpdiBjbGFzcz0iY2FwdGlvbiB2ZXJ0aWNhbC1jZW50ZXIgdGV4dC1sZWZ0Ij4NCgkJPGRpdiBjbGFzcz0iYmlnLXRleHQgZmFkZUluRG93bi0xIj4gPC9kaXY+DQoJICA8L2Rpdj48IS0tIC8uY2FwdGlvbiAtLT4NCiAgPC9kaXY+PCEtLSAvLmNvbnRhaW5lci1mbHVpZCAtLT4NCjwvZGl2PjwhLS0gLy5pdGVtIC0tPg0KPGRpdiBjbGFzcz0iaXRlbSIgc3R5bGU9ImJhY2tncm91bmQtaW1hZ2U6IHVybChodHRwOi8vc2ltb3BzLnBlcnRhbWluYS5jb206ODUvYXNzZXRzL2ltYWdlcy9zbGlkZXJzL2tpbGFuZy1kYW4taG8uanBnKTsiPg0KICA8ZGl2IGNsYXNzPSJjb250YWluZXItZmx1aWQiPg0KICAgICA8ZGl2IGNsYXNzPSJjYXB0aW9uIHZlcnRpY2FsLWNlbnRlciB0ZXh0LWxlZnQiPg0KCQk8ZGl2IGNsYXNzPSJiaWctdGV4dCBmYWRlSW5Eb3duLTEiPiA8L2Rpdj4NCgkgIDwvZGl2PjwhLS0gLy5jYXB0aW9uIC0tPg0KICA8L2Rpdj48IS0tIC8uY29udGFpbmVyLWZsdWlkIC0tPg0KPC9kaXY+PCEtLSAvLml0ZW0gLS0+DQo8ZGl2IGNsYXNzPSJpdGVtIiBzdHlsZT0iYmFja2dyb3VuZC1pbWFnZTogdXJsKGh0dHA6Ly9zaW1vcHMucGVydGFtaW5hLmNvbTo4NS9hc3NldHMvaW1hZ2VzL3NsaWRlcnMvS0VIQU5EQUxBTi5qcGcpOyI+DQogIDxkaXYgY2xhc3M9ImNvbnRhaW5lci1mbHVpZCI+DQogICAgIDxkaXYgY2xhc3M9ImNhcHRpb24gdmVydGljYWwtY2VudGVyIHRleHQtbGVmdCI+DQoJCTxkaXYgY2xhc3M9ImJpZy10ZXh0IGZhZGVJbkRvd24tMSI+IDwvZGl2Pg0KCSAgPC9kaXY+PCEtLSAvLmNhcHRpb24gLS0+DQogIDwvZGl2PjwhLS0gLy5jb250YWluZXItZmx1aWQgLS0+DQo8L2Rpdj48IS0tIC8uaXRlbSAtLT4NCjxkaXYgY2xhc3M9Iml0ZW0iIHN0eWxlPSJiYWNrZ3JvdW5kLWltYWdlOiB1cmwoaHR0cDovL3NpbW9wcy5wZXJ0YW1pbmEuY29tOjg1L2Fzc2V0cy9pbWFnZXMvc2xpZGVycy9QUk9GSVQtTUFSR0lOLmpwZyk7Ij4NCiAgPGRpdiBjbGFzcz0iY29udGFpbmVyLWZsdWlkIj4NCiAgICAgPGRpdiBjbGFzcz0iY2FwdGlvbiB2ZXJ0aWNhbC1jZW50ZXIgdGV4dC1sZWZ0Ij4NCgkJPGRpdiBjbGFzcz0iYmlnLXRleHQgZmFkZUluRG93bi0xIj4gPC9kaXY+DQoJICA8L2Rpdj48IS0tIC8uY2FwdGlvbiAtLT4NCiAgPC9kaXY+PCEtLSAvLmNvbnRhaW5lci1mbHVpZCAtLT4NCjwvZGl2PjwhLS0gLy5pdGVtIC0tPg0KPGRpdiBjbGFzcz0iaXRlbSIgc3R5bGU9ImJhY2tncm91bmQtaW1hZ2U6IHVybChodHRwOi8vc2ltb3BzLnBlcnRhbWluYS5jb206ODUvYXNzZXRzL2ltYWdlcy9zbGlkZXJzL0hTU0UuanBnKTsiPg0KICA8ZGl2IGNsYXNzPSJjb250YWluZXItZmx1aWQiPg0KICAgICA8ZGl2IGNsYXNzPSJjYXB0aW9uIHZlcnRpY2FsLWNlbnRlciB0ZXh0LWxlZnQiPg0KCQk8ZGl2IGNsYXNzPSJiaWctdGV4dCBmYWRlSW5Eb3duLTEiPiA8L2Rpdj4NCgkgIDwvZGl2PjwhLS0gLy5jYXB0aW9uIC0tPg0KICA8L2Rpdj48IS0tIC8uY29udGFpbmVyLWZsdWlkIC0tPg0KPC9kaXY+PCEtLSAvLml0ZW0gLS0+DQo8ZGl2IGNsYXNzPSJpdGVtIiBzdHlsZT0iYmFja2dyb3VuZC1pbWFnZTogdXJsKGh0dHA6Ly9zaW1vcHMucGVydGFtaW5hLmNvbTo4NS9hc3NldHMvaW1hZ2VzL3NsaWRlcnMvOHByaW9yaXRhcy5qcGcpOyI+DQogIDxkaXYgY2xhc3M9ImNvbnRhaW5lci1mbHVpZCI+DQogICAgIDxkaXYgY2xhc3M9ImNhcHRpb24gdmVydGljYWwtY2VudGVyIHRleHQtbGVmdCI+DQoJCTxkaXYgY2xhc3M9ImJpZy10ZXh0IGZhZGVJbkRvd24tMSI+IDwvZGl2Pg0KCSAgPC9kaXY+PCEtLSAvLmNhcHRpb24gLS0+DQogIDwvZGl2PjwhLS0gLy5jb250YWluZXItZmx1aWQgLS0+DQo8L2Rpdj48IS0tIC8uaXRlbSAtLT4NCjxkaXYgY2xhc3M9Iml0ZW0iIHN0eWxlPSJiYWNrZ3JvdW5kLWltYWdlOiB1cmwoaHR0cDovL3NpbW9wcy5wZXJ0YW1pbmEuY29tOjg1L2Fzc2V0cy9pbWFnZXMvc2xpZGVycy9Ccm9hZGNhc3RWaXNpUlU0LmpwZyk7Ij4NCiAgPGRpdiBjbGFzcz0iY29udGFpbmVyLWZsdWlkIj4NCiAgICAgPGRpdiBjbGFzcz0iY2FwdGlvbiB2ZXJ0aWNhbC1jZW50ZXIgdGV4dC1sZWZ0Ij4NCgkJPGRpdiBjbGFzcz0iYmlnLXRleHQgZmFkZUluRG93bi0xIj4gPC9kaXY+DQoJICA8L2Rpdj48IS0tIC8uY2FwdGlvbiAtLT4NCiAgPC9kaXY+PCEtLSAvLmNvbnRhaW5lci1mbHVpZCAtLT4NCjwvZGl2PjwhLS0gLy5pdGVtIC0tPg0KPGRpdiBjbGFzcz0iaXRlbSIgc3R5bGU9ImJhY2tncm91bmQtaW1hZ2U6IHVybChodHRwOi8vc2ltb3BzLnBlcnRhbWluYS5jb206ODUvYXNzZXRzL2ltYWdlcy9zbGlkZXJzL09IUHJvbW90aW9uX1IzLmpwZyk7Ij4NCiAgPGRpdiBjbGFzcz0iY29udGFpbmVyLWZsdWlkIj4NCiAgICAgPGRpdiBjbGFzcz0iY2FwdGlvbiB2ZXJ0aWNhbC1jZW50ZXIgdGV4dC1sZWZ0Ij4NCgkJPGRpdiBjbGFzcz0iYmlnLXRleHQgZmFkZUluRG93bi0xIj4gPC9kaXY+DQoJICA8L2Rpdj48IS0tIC8uY2FwdGlvbiAtLT4NCiAgPC9kaXY+PCEtLSAvLmNvbnRhaW5lci1mbHVpZCAtLT4NCjwvZGl2PjwhLS0gLy5pdGVtIC0tPg0KZAIXD2QWBAIBDxYCHwFlZAIFD2QWEAIBDxYCHwEFtww8ZGl2IGNsYXNzPSJtYXJxdWVlLWNvbnRlbnQiPg0KPGltZyBjbGFzcz0ic21hbGwtc3F1YXJlLXRodW1iIHB1bGwtbGVmdCBpbWctcmVzcG9uc2l2ZSIgc3JjPSJpbWFnZXMvcGVrZXJqYS83MDIzNjEuanBnIj4NCjxoNSBjbGFzcz0iYm9sZCI+UlVNQU5UTzwvaDU+DQo8aDYgY2xhc3M9InBvc2l0aW9uIj5QanMuIFNlY3Rpb24gSGVhZCBMT0MgSUk8L2g2Pg0KPC9kaXY+DQo8ZGl2IGNsYXNzPSJtYXJxdWVlLWNvbnRlbnQiPg0KPGltZyBjbGFzcz0ic21hbGwtc3F1YXJlLXRodW1iIHB1bGwtbGVmdCBpbWctcmVzcG9uc2l2ZSIgc3JjPSJpbWFnZXMvcGVrZXJqYS83NDQ2MDguanBnIj4NCjxoNSBjbGFzcz0iYm9sZCI+RElOQSBTQUZJVFJJIERFV0k8L2g1Pg0KPGg2IGNsYXNzPSJwb3NpdGlvbiI+UGpzLiBSZWZpbmVyeSBJbnRlcm5hbCBBdWRpdCBDaWxhY2EuLi48L2g2Pg0KPC9kaXY+DQo8ZGl2IGNsYXNzPSJtYXJxdWVlLWNvbnRlbnQiPg0KPGltZyBjbGFzcz0ic21hbGwtc3F1YXJlLXRodW1iIHB1bGwtbGVmdCBpbWctcmVzcG9uc2l2ZSIgc3JjPSJpbWFnZXMvcGVrZXJqYS83NTAxMDEuanBnIj4NCjxoNSBjbGFzcz0iYm9sZCI+QkFNQkFORyBBS1JJQU5UTzwvaDU+DQo8aDYgY2xhc3M9InBvc2l0aW9uIj5QanMuIE1hbmFnZXIgR2VuZXJhbCBBZmZhaXJzPC9oNj4NCjwvZGl2Pg0KPGRpdiBjbGFzcz0ibWFycXVlZS1jb250ZW50Ij4NCjxpbWcgY2xhc3M9InNtYWxsLXNxdWFyZS10aHVtYiBwdWxsLWxlZnQgaW1nLXJlc3BvbnNpdmUiIHNyYz0iaW1hZ2VzL3Bla2VyamEvNzAyMjE1LmpwZyI+DQo8aDUgY2xhc3M9ImJvbGQiPlNBTVNVRElOIEFMSTwvaDU+DQo8aDYgY2xhc3M9InBvc2l0aW9uIj5QanMuIFNlY3Rpb24gSGVhZCBJbnZlbnRvcnkgQ29udHJvbDwvaDY+DQo8L2Rpdj4NCjxkaXYgY2xhc3M9Im1hcnF1ZWUtY29udGVudCI+DQo8aW1nIGNsYXNzPSJzbWFsbC1zcXVhcmUtdGh1bWIgcHVsbC1sZWZ0IGltZy1yZXNwb25zaXZlIiBzcmM9ImltYWdlcy9wZWtlcmphL25vX3Bob3RvLmpwZyI+DQo8aDUgY2xhc3M9ImJvbGQiPkhFTkRSQSBTRVRJQVdBTjwvaDU+DQo8aDYgY2xhc3M9InBvc2l0aW9uIj5QanMuIFJlZ2lvbiBNYW5hZ2VyIE1hcmluZSBJVjwvaDY+DQo8L2Rpdj4NCjxkaXYgY2xhc3M9Im1hcnF1ZWUtY29udGVudCI+DQo8aW1nIGNsYXNzPSJzbWFsbC1zcXVhcmUtdGh1bWIgcHVsbC1sZWZ0IGltZy1yZXNwb25zaXZlIiBzcmM9ImltYWdlcy9wZWtlcmphLzYzMDY2OS5qcGciPg0KPGg1IGNsYXNzPSJib2xkIj5IRVNUSSBOVVJXQVNPTk88L2g1Pg0KPGg2IGNsYXNzPSJwb3NpdGlvbiI+UGpzLiBTZWN0aW9uIEhlYWQgUGxhbnQgUmVsaWFiaWxpdHk8L2g2Pg0KPC9kaXY+DQo8ZGl2IGNsYXNzPSJtYXJxdWVlLWNvbnRlbnQiPg0KPGltZyBjbGFzcz0ic21hbGwtc3F1YXJlLXRodW1iIHB1bGwtbGVmdCBpbWctcmVzcG9uc2l2ZSIgc3JjPSJpbWFnZXMvcGVrZXJqYS9ub19waG90by5qcGciPg0KPGg1IGNsYXNzPSJib2xkIj5DQUhZTyBXSURJQU5UT1JPPC9oNT4NCjxoNiBjbGFzcz0icG9zaXRpb24iPlBqcy4gRmluYW5jZSBSVSBJViBNYW5hZ2VyPC9oNj4NCjwvZGl2Pg0KZAIDDxYCHwEFrgw8ZGl2IGNsYXNzPSJtYXJxdWVlLWNvbnRlbnQiPg0KPGltZyBjbGFzcz0ic21hbGwtc3F1YXJlLXRodW1iIHB1bGwtbGVmdCBpbWctcmVzcG9uc2l2ZSIgc3JjPSJpbWFnZXMvcGVrZXJqYS83MDg5NjQuanBnIj4NCjxoNSBjbGFzcz0iYm9sZCI+REpPS08gUFJJWU9OTzwvaDU+DQo8aDYgY2xhc3M9InBvc2l0aW9uIj5HTSBSRUZJTkVSWSBVTklUIElWIC0gQ0lMQUNBUDwvaDY+DQo8L2Rpdj4NCjxkaXYgY2xhc3M9Im1hcnF1ZWUtY29udGVudCI+DQo8aW1nIGNsYXNzPSJzbWFsbC1zcXVhcmUtdGh1bWIgcHVsbC1sZWZ0IGltZy1yZXNwb25zaXZlIiBzcmM9ImltYWdlcy9wZWtlcmphLzcxNzUxNy5qcGciPg0KPGg1IGNsYXNzPSJib2xkIj5OVVIgUUFESU08L2g1Pg0KPGg2IGNsYXNzPSJwb3NpdGlvbiI+U3IgTWFuYWdlciBPcGVyYXRpb24gJiBNYW51ZmFjdHVyaW5nPC9oNj4NCjwvZGl2Pg0KPGRpdiBjbGFzcz0ibWFycXVlZS1jb250ZW50Ij4NCjxpbWcgY2xhc3M9InNtYWxsLXNxdWFyZS10aHVtYiBwdWxsLWxlZnQgaW1nLXJlc3BvbnNpdmUiIHNyYz0iaW1hZ2VzL3Bla2VyamEvNzE0NDg4LmpwZyI+DQo8aDUgY2xhc3M9ImJvbGQiPkRFREUgREFSU09OTzwvaDU+DQo8aDYgY2xhc3M9InBvc2l0aW9uIj5NQU5BR0VSIFBST0RVQ1RJT04gSTwvaDY+DQo8L2Rpdj4NCjxkaXYgY2xhc3M9Im1hcnF1ZWUtY29udGVudCI+DQo8aW1nIGNsYXNzPSJzbWFsbC1zcXVhcmUtdGh1bWIgcHVsbC1sZWZ0IGltZy1yZXNwb25zaXZlIiBzcmM9ImltYWdlcy9wZWtlcmphLzcxNDQ3MS5qcGciPg0KPGg1IGNsYXNzPSJib2xkIj5GUkVEWSBQUklKQVNFVElBPC9oNT4NCjxoNiBjbGFzcz0icG9zaXRpb24iPk1hbmFnZXIgUHJvZHVjdGlvbiBJSTwvaDY+DQo8L2Rpdj4NCjxkaXYgY2xhc3M9Im1hcnF1ZWUtY29udGVudCI+DQo8aW1nIGNsYXNzPSJzbWFsbC1zcXVhcmUtdGh1bWIgcHVsbC1sZWZ0IGltZy1yZXNwb25zaXZlIiBzcmM9ImltYWdlcy9wZWtlcmphL25vX3Bob3RvLmpwZyI+DQo8aDUgY2xhc3M9ImJvbGQiPkFHVU5HIFNVWU9TTzwvaDU+DQo8aDYgY2xhc3M9InBvc2l0aW9uIj5NYW5hZ2VyIFJlZmluZXJ5IFBsYW5uaW5nICYgT3B0aW1pei4uLjwvaDY+DQo8L2Rpdj4NCjxkaXYgY2xhc3M9Im1hcnF1ZWUtY29udGVudCI+DQo8aW1nIGNsYXNzPSJzbWFsbC1zcXVhcmUtdGh1bWIgcHVsbC1sZWZ0IGltZy1yZXNwb25zaXZlIiBzcmM9ImltYWdlcy9wZWtlcmphL25vX3Bob3RvLmpwZyI+DQo8aDUgY2xhc3M9ImJvbGQiPklXQU4gS1VSTklBV0FOPC9oNT4NCjxoNiBjbGFzcz0icG9zaXRpb24iPk1hbmFnZXIgTWFpbnRlbmFuY2UgUGxhbm5pbmcgJiBTdXBwLi4uPC9oNj4NCjwvZGl2Pg0KPGRpdiBjbGFzcz0ibWFycXVlZS1jb250ZW50Ij4NCjxpbWcgY2xhc3M9InNtYWxsLXNxdWFyZS10aHVtYiBwdWxsLWxlZnQgaW1nLXJlc3BvbnNpdmUiIHNyYz0iaW1hZ2VzL3Bla2VyamEvNzE3NzQ0LmpwZyI+DQo8aDUgY2xhc3M9ImJvbGQiPklTS0FOREFSPC9oNT4NCjxoNiBjbGFzcz0icG9zaXRpb24iPk1hbmFnZXIgTWFpbnRlbmFuY2UgUGxhbm5pbmcgJiBTdXBwb3J0PC9oNj4NCjwvZGl2Pg0KZAIFDxYCHwEF2Q08ZGl2IGNsYXNzPSJpdGVtIGFjdGl2ZSI+DQogICAgPGRpdiBjbGFzcz0iY29sLXhzLTEyIGNvbC1zbS0xMiBjb2wtbWQtMTIgbm8tcGFkZGluZyB0aHVtYi1saXN0Ij4NCiAgICAgICAgPGRpdiBjbGFzcz0iY29sLXhzLTEyIGNvbC1zbS0xMiBjb2wtbWQtNCBuby1wYWRkaW5nIj4NCjxhIGhyZWY9IlBlbmd1bXVtYW4uYXNweD9pZD04NzIzIj4NCiAgICAgICAgICAgIDxkaXYgY2xhc3M9InRpdGxlLXBsYWNlciI+DQogICAgICAgICAgICAgICAgPGg2PjI2LzA3LzIwMTg8L2g2Pg0KICAgICAgICAgICAgICAgIDxoNSBjbGFzcz0iYm9sZCI+SEVBTFRIWSBUQUxLICYgU0VOQU0gSlVNQVQgUEFHSTwvaDU+DQogICAgICAgICAgICAgICAgPGg2IGNsYXNzPSJncmVlbiI+RGliYWNhIDEwNyBrYWxpPC9oNj4NCiAgICAgICAgICAgIDwvZGl2Pg0KICAgICAgICAgICAgPGltZyBpZD0naW1nUGVuZ3VtdW1hbl84NzIzJyBjbGFzcz0iaW1nLXJlc3BvbnNpdmUgc3F1YXJlLXRodW1iIiBzcmM9ImltZ2hhbmRsZXIuYXNoeD9jPVAmaWQ9ODcyMyIgc3R5bGU9IndpZHRoOjIwNHB4O2hlaWdodDoyMDRweDttYXgtaGVpZ2h0OjIwNHB4O21heC13aWR0aDoyMDRweDsiPg0KICAgICAgICAgICAgPC9hPg0KICAgICAgICA8L2Rpdj4NCiAgICAgICAgPGRpdiBjbGFzcz0iY29sLXhzLTEyIGNvbC1zbS0xMiBjb2wtbWQtNCBuby1wYWRkaW5nIj4NCjxhIGhyZWY9IlBlbmd1bXVtYW4uYXNweD9pZD04NzE3Ij4NCiAgICAgICAgICAgIDxkaXYgY2xhc3M9InRpdGxlLXBsYWNlciI+DQogICAgICAgICAgICAgICAgPGg2PjI1LzA3LzIwMTg8L2g2Pg0KICAgICAgICAgICAgICAgIDxoNSBjbGFzcz0iYm9sZCI+MjAxOCBFTVBMT1lFRSBTVVJWRVkgQ09SUE9SQVRFIFdFTEwuLi48L2g1Pg0KICAgICAgICAgICAgICAgIDxoNiBjbGFzcz0iZ3JlZW4iPkRpYmFjYSAxNTMga2FsaTwvaDY+DQogICAgICAgICAgICA8L2Rpdj4NCiAgICAgICAgPGltZyBpZD0naW1nUGVuZ3VtdW1hbl84NzE3JyBjbGFzcz0iaW1nLXJlc3BvbnNpdmUgc3F1YXJlLXRodW1iIiBzcmM9ImltZ2hhbmRsZXIuYXNoeD9jPVAmaWQ9ODcxNyIgc3R5bGU9IndpZHRoOjIwNHB4O2hlaWdodDoyMDRweDttYXgtaGVpZ2h0OjIwNHB4O21heC13aWR0aDoyMDRweDsiPg0KICAgICAgICA8L2E+DQogICAgPC9kaXY+DQogICAgICAgIDxkaXYgY2xhc3M9ImNvbC14cy0xMiBjb2wtc20tMTIgY29sLW1kLTQgbm8tcGFkZGluZyI+DQo8YSBocmVmPSJQZW5ndW11bWFuLmFzcHg/aWQ9ODcxMSI+DQogICAgICAgICAgICA8ZGl2IGNsYXNzPSJ0aXRsZS1wbGFjZXIiPg0KICAgICAgICAgICAgICAgIDxoNj4xOS8wNy8yMDE4PC9oNj4NCiAgICAgICAgICAgICAgICA8aDUgY2xhc3M9ImJvbGQiPk1BUkkgQkVSIFFVUkJBTi4uLi4uLi4mbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDs8L2g1Pg0KICAgICAgICAgICAgICAgIDxoNiBjbGFzcz0iZ3JlZW4iPkRpYmFjYSA0MzEga2FsaTwvaDY+DQogICAgICAgICAgICA8L2Rpdj4NCiAgICAgICAgPGltZyBpZD0naW1nUGVuZ3VtdW1hbl84NzExJyBjbGFzcz0iaW1nLXJlc3BvbnNpdmUgc3F1YXJlLXRodW1iIiBzcmM9ImltZ2hhbmRsZXIuYXNoeD9jPVAmaWQ9ODcxMSIgc3R5bGU9IndpZHRoOjIwNHB4O2hlaWdodDoyMDRweDttYXgtaGVpZ2h0OjIwNHB4O21heC13aWR0aDoyMDRweDsiPg0KICAgICAgICA8L2E+DQogICAgPC9kaXY+DQogICAgPC9kaXY+PC9kaXY+ZAIHDxYCHwEFlhY8ZGl2IGNsYXNzPSJjb2wteHMtMTIgY29sLXNtLTEyIGNvbC1tZC0xMiBuby1wYWRkaW5nIHRodW1iLWxpc3QiPg0KIDxkaXYgY2xhc3M9ImNvbC14cy0xMiBjb2wtc20tMTIgY29sLW1kLTQgbm8tcGFkZGluZyI+DQo8YSBocmVmPSJQZW5ndW11bWFuLmFzcHg/aWQ9ODcyNyI+DQogIDxkaXYgY2xhc3M9InRpdGxlLXBsYWNlciI+DQogICAgIDxoNj4yNy8wNy8yMDE4PC9oNj4NCiAgICAgPGg1IGNsYXNzPSJib2xkIj5EQUZUQVIgT04gRFVUWSBSVSBJViBUQU5HR0FMIDI4IC0gMi4uLjwvaDU+DQogICAgPGg2IGNsYXNzPSJncmVlbiI+RGliYWNhIDE0IGthbGk8L2g2Pg0KICA8L2Rpdj4NCjxpbWcgaWQ9J2ltZ1Blbmd1bXVtYW5fODcyNycgY2xhc3M9ImltZy1yZXNwb25zaXZlIHNxdWFyZS10aHVtYiIgc3JjPSJpbWdoYW5kbGVyLmFzaHg/Yz1QJmlkPTg3MjciIHN0eWxlPSJ3aWR0aDoyMDRweDtoZWlnaHQ6MjA0cHg7bWF4LWhlaWdodDoyMDRweDttYXgtd2lkdGg6MjA0cHg7Ij4NCjwvYT4NCjwvZGl2Pg0KPGRpdiBjbGFzcz0iY29sLXhzLTEyIGNvbC1zbS0xMiBjb2wtbWQtNCBuby1wYWRkaW5nIj4NCjxhIGhyZWY9IlBlbmd1bXVtYW4uYXNweD9pZD04NzI2Ij4NCiAgPGRpdiBjbGFzcz0idGl0bGUtcGxhY2VyIj4NCiAgICAgPGg2PjI3LzA3LzIwMTg8L2g2Pg0KICAgICA8aDUgY2xhc3M9ImJvbGQiPkhBRElSSUxBSCBQRU5HQUpJQU4gUEVMRVBBU0FOIEhBSkkuLi4uPC9oNT4NCiAgICA8aDYgY2xhc3M9ImdyZWVuIj5EaWJhY2EgMTkga2FsaTwvaDY+DQogIDwvZGl2Pg0KPGltZyBpZD0naW1nUGVuZ3VtdW1hbl84NzI2JyBjbGFzcz0iaW1nLXJlc3BvbnNpdmUgc3F1YXJlLXRodW1iIiBzcmM9ImltZ2hhbmRsZXIuYXNoeD9jPVAmaWQ9ODcyNiIgc3R5bGU9IndpZHRoOjIwNHB4O2hlaWdodDoyMDRweDttYXgtaGVpZ2h0OjIwNHB4O21heC13aWR0aDoyMDRweDsiPg0KPC9hPg0KPC9kaXY+DQo8ZGl2IGNsYXNzPSJjb2wteHMtMTIgY29sLXNtLTEyIGNvbC1tZC00IG5vLXBhZGRpbmciPg0KPGEgaHJlZj0iUGVuZ3VtdW1hbi5hc3B4P2lkPTg3MjUiPg0KICA8ZGl2IGNsYXNzPSJ0aXRsZS1wbGFjZXIiPg0KICAgICA8aDY+MjcvMDcvMjAxODwvaDY+DQogICAgIDxoNSBjbGFzcz0iYm9sZCI+SkFEV0FMIFBFTEFUSUhBTiBESVJFS1RPUkFUIFBFTkdPTEEuLi48L2g1Pg0KICAgIDxoNiBjbGFzcz0iZ3JlZW4iPkRpYmFjYSAzMSBrYWxpPC9oNj4NCiAgPC9kaXY+DQo8aW1nIGlkPSdpbWdQZW5ndW11bWFuXzg3MjUnIGNsYXNzPSJpbWctcmVzcG9uc2l2ZSBzcXVhcmUtdGh1bWIiIHNyYz0iaW1naGFuZGxlci5hc2h4P2M9UCZpZD04NzI1IiBzdHlsZT0id2lkdGg6MjA0cHg7aGVpZ2h0OjIwNHB4O21heC1oZWlnaHQ6MjA0cHg7bWF4LXdpZHRoOjIwNHB4OyI+DQo8L2E+DQo8L2Rpdj4NCjwvZGl2PjxkaXYgY2xhc3M9ImNvbC14cy0xMiBjb2wtc20tMTIgY29sLW1kLTEyIG5vLXBhZGRpbmcgdGh1bWItbGlzdCI+DQo8ZGl2IGNsYXNzPSJjb2wteHMtMTIgY29sLXNtLTEyIGNvbC1tZC00IG5vLXBhZGRpbmciPg0KPGEgaHJlZj0iUGVuZ3VtdW1hbi5hc3B4P2lkPTg3MTYiPg0KICA8ZGl2IGNsYXNzPSJ0aXRsZS1wbGFjZXIiPg0KICAgICA8aDY+MjQvMDcvMjAxODwvaDY+DQogICAgIDxoNSBjbGFzcz0iYm9sZCI+QVlPIFJBTUFJS0FOIEtFTE9NUE9LIFNFTkFNIFlPR0E8L2g1Pg0KICAgIDxoNiBjbGFzcz0iZ3JlZW4iPkRpYmFjYSAyNzkga2FsaTwvaDY+DQogIDwvZGl2Pg0KPGltZyBpZD0naW1nUGVuZ3VtdW1hbl84NzE2JyBjbGFzcz0iaW1nLXJlc3BvbnNpdmUgc3F1YXJlLXRodW1iIiBzcmM9ImltZ2hhbmRsZXIuYXNoeD9jPVAmaWQ9ODcxNiIgc3R5bGU9IndpZHRoOjIwNHB4O2hlaWdodDoyMDRweDttYXgtaGVpZ2h0OjIwNHB4O21heC13aWR0aDoyMDRweDsiPg0KPC9hPg0KPC9kaXY+DQo8ZGl2IGNsYXNzPSJjb2wteHMtMTIgY29sLXNtLTEyIGNvbC1tZC00IG5vLXBhZGRpbmciPg0KPGEgaHJlZj0iUGVuZ3VtdW1hbi5hc3B4P2lkPTg3MTQiPg0KICA8ZGl2IGNsYXNzPSJ0aXRsZS1wbGFjZXIiPg0KICAgICA8aDY+MjMvMDcvMjAxODwvaDY+DQogICAgIDxoNSBjbGFzcz0iYm9sZCI+SkFEV0FMIFBMQU4gVklTSVQgMjMgUy9EIDI3IEpVTEkgMjAuLi48L2g1Pg0KICAgIDxoNiBjbGFzcz0iZ3JlZW4iPkRpYmFjYSAxNTQga2FsaTwvaDY+DQogIDwvZGl2Pg0KPGltZyBpZD0naW1nUGVuZ3VtdW1hbl84NzE0JyBjbGFzcz0iaW1nLXJlc3BvbnNpdmUgc3F1YXJlLXRodW1iIiBzcmM9ImltZ2hhbmRsZXIuYXNoeD9jPVAmaWQ9ODcxNCIgc3R5bGU9IndpZHRoOjIwNHB4O2hlaWdodDoyMDRweDttYXgtaGVpZ2h0OjIwNHB4O21heC13aWR0aDoyMDRweDsiPg0KPC9hPg0KPC9kaXY+DQo8ZGl2IGNsYXNzPSJjb2wteHMtMTIgY29sLXNtLTEyIGNvbC1tZC00IG5vLXBhZGRpbmciPg0KPGEgaHJlZj0iUGVuZ3VtdW1hbi5hc3B4P2lkPTg3MTMiPg0KICA8ZGl2IGNsYXNzPSJ0aXRsZS1wbGFjZXIiPg0KICAgICA8aDY+MjAvMDcvMjAxODwvaDY+DQogICAgIDxoNSBjbGFzcz0iYm9sZCI+UEVUVUdBUyBTVEFORCBCWSAvIFBJS0VUIEpBR0EgR1VEQU4uLi48L2g1Pg0KICAgIDxoNiBjbGFzcz0iZ3JlZW4iPkRpYmFjYSAxMzgga2FsaTwvaDY+DQogIDwvZGl2Pg0KPGltZyBpZD0naW1nUGVuZ3VtdW1hbl84NzEzJyBjbGFzcz0iaW1nLXJlc3BvbnNpdmUgc3F1YXJlLXRodW1iIiBzcmM9ImltZ2hhbmRsZXIuYXNoeD9jPVAmaWQ9ODcxMyIgc3R5bGU9IndpZHRoOjIwNHB4O2hlaWdodDoyMDRweDttYXgtaGVpZ2h0OjIwNHB4O21heC13aWR0aDoyMDRweDsiPg0KPC9hPg0KPC9kaXY+DQo8L2Rpdj5kAgkPFgIfAQX4EzxkaXYgY2xhc3M9Iml0ZW0gYWN0aXZlIGNvbC14cy0xMiBjb2wtc20tMTIgY29sLW1kLTEyIG5vLXBhZGRpbmciPjxkaXYgY2xhc3M9ImNvbC14cy0xMiBjb2wtc20tMTIgY29sLW1kLTYgbm8tcGFkZGluZyI+ICAgPGltZyBjbGFzcz0iaW1nLXRodW1iIGltZy1yZXNwb25zaXZlIiBzcmM9ImltYWdlcy9wZWtlcmphLzc1Mjc3OS5qcGciPjwvZGl2PjxkaXYgY2xhc3M9ImNvbC14cy0xMiBjb2wtc20tMTIgY29sLW1kLTYgbm8tcGFkZGluZyI+IDxoNiBjbGFzcz0iYmx1ZSI+NzUyNzc5PC9oNj48aDUgY2xhc3M9ImJvbGQiPkFMRkkgSEFTQU48L2g1PjxoNj5MYWJvcmF0b3J5PC9oNj48YSBjbGFzcz0iYnRuIGJ0bi1zdWNjZXNzIGJ0bi1mdWxsIGJ0bi14cyIgZGF0YS10b2dnbGU9Im1vZGFsIiBkYXRhLXRhcmdldD0iI3VjYXBhbk1vZGFsIiBkYXRhLWlzbG9nZWQ9IlQiIGRhdGEtbm9wZWs9Ijc1Mjc3OSIgZGF0YS1uYW1hPSJBTEZJIEhBU0FOIj5CZXJpIHVjYXBhbjwvYT48L2Rpdj48L2Rpdj48ZGl2IGNsYXNzPSJpdGVtIGNvbC14cy0xMiBjb2wtc20tMTIgY29sLW1kLTEyIG5vLXBhZGRpbmciPjxkaXYgY2xhc3M9ImNvbC14cy0xMiBjb2wtc20tMTIgY29sLW1kLTYgbm8tcGFkZGluZyI+ICAgPGltZyBjbGFzcz0iaW1nLXRodW1iIGltZy1yZXNwb25zaXZlIiBzcmM9ImltYWdlcy9wZWtlcmphLzc1MDY4Ni5qcGciPjwvZGl2PjxkaXYgY2xhc3M9ImNvbC14cy0xMiBjb2wtc20tMTIgY29sLW1kLTYgbm8tcGFkZGluZyI+IDxoNiBjbGFzcz0iYmx1ZSI+NzUwNjg2PC9oNj48aDUgY2xhc3M9ImJvbGQiPkFOREkgV0lCT1dPPC9oNT48aDY+TWFpbnRlbmFuY2UgQXJlYSAyPC9oNj48YSBjbGFzcz0iYnRuIGJ0bi1zdWNjZXNzIGJ0bi1mdWxsIGJ0bi14cyIgZGF0YS10b2dnbGU9Im1vZGFsIiBkYXRhLXRhcmdldD0iI3VjYXBhbk1vZGFsIiBkYXRhLWlzbG9nZWQ9IlQiIGRhdGEtbm9wZWs9Ijc1MDY4NiIgZGF0YS1uYW1hPSJBTkRJIFdJQk9XTyI+QmVyaSB1Y2FwYW48L2E+PC9kaXY+PC9kaXY+PGRpdiBjbGFzcz0iaXRlbSBjb2wteHMtMTIgY29sLXNtLTEyIGNvbC1tZC0xMiBuby1wYWRkaW5nIj48ZGl2IGNsYXNzPSJjb2wteHMtMTIgY29sLXNtLTEyIGNvbC1tZC02IG5vLXBhZGRpbmciPiAgIDxpbWcgY2xhc3M9ImltZy10aHVtYiBpbWctcmVzcG9uc2l2ZSIgc3JjPSJpbWFnZXMvcGVrZXJqYS83NDk5NTcuanBnIj48L2Rpdj48ZGl2IGNsYXNzPSJjb2wteHMtMTIgY29sLXNtLTEyIGNvbC1tZC02IG5vLXBhZGRpbmciPiA8aDYgY2xhc3M9ImJsdWUiPjc0OTk1NzwvaDY+PGg1IGNsYXNzPSJib2xkIj5BTkRZIE5PUiBBRlJJWUFOVE88L2g1PjxoNj5NYWludGVuYW5jZSBBcmVhIDU8L2g2PjxhIGNsYXNzPSJidG4gYnRuLXN1Y2Nlc3MgYnRuLWZ1bGwgYnRuLXhzIiBkYXRhLXRvZ2dsZT0ibW9kYWwiIGRhdGEtdGFyZ2V0PSIjdWNhcGFuTW9kYWwiIGRhdGEtaXNsb2dlZD0iVCIgZGF0YS1ub3Blaz0iNzQ5OTU3IiBkYXRhLW5hbWE9IkFORFkgTk9SIEFGUklZQU5UTyI+QmVyaSB1Y2FwYW48L2E+PC9kaXY+PC9kaXY+PGRpdiBjbGFzcz0iaXRlbSBjb2wteHMtMTIgY29sLXNtLTEyIGNvbC1tZC0xMiBuby1wYWRkaW5nIj48ZGl2IGNsYXNzPSJjb2wteHMtMTIgY29sLXNtLTEyIGNvbC1tZC02IG5vLXBhZGRpbmciPiAgIDxpbWcgY2xhc3M9ImltZy10aHVtYiBpbWctcmVzcG9uc2l2ZSIgc3JjPSJpbWFnZXMvcGVrZXJqYS83MDU3NjQuanBnIj48L2Rpdj48ZGl2IGNsYXNzPSJjb2wteHMtMTIgY29sLXNtLTEyIGNvbC1tZC02IG5vLXBhZGRpbmciPiA8aDYgY2xhc3M9ImJsdWUiPjcwNTc2NDwvaDY+PGg1IGNsYXNzPSJib2xkIj5EQVJJTkdVTjwvaDU+PGg2PkZPQyBJSTwvaDY+PGEgY2xhc3M9ImJ0biBidG4tc3VjY2VzcyBidG4tZnVsbCBidG4teHMiIGRhdGEtdG9nZ2xlPSJtb2RhbCIgZGF0YS10YXJnZXQ9IiN1Y2FwYW5Nb2RhbCIgZGF0YS1pc2xvZ2VkPSJUIiBkYXRhLW5vcGVrPSI3MDU3NjQiIGRhdGEtbmFtYT0iREFSSU5HVU4iPkJlcmkgdWNhcGFuPC9hPjwvZGl2PjwvZGl2PjxkaXYgY2xhc3M9Iml0ZW0gY29sLXhzLTEyIGNvbC1zbS0xMiBjb2wtbWQtMTIgbm8tcGFkZGluZyI+PGRpdiBjbGFzcz0iY29sLXhzLTEyIGNvbC1zbS0xMiBjb2wtbWQtNiBuby1wYWRkaW5nIj4gICA8aW1nIGNsYXNzPSJpbWctdGh1bWIgaW1nLXJlc3BvbnNpdmUiIHNyYz0iaW1hZ2VzL3Bla2VyamEvNzUyOTc1LmpwZyI+PC9kaXY+PGRpdiBjbGFzcz0iY29sLXhzLTEyIGNvbC1zbS0xMiBjb2wtbWQtNiBuby1wYWRkaW5nIj4gPGg2IGNsYXNzPSJibHVlIj43NTI5NzU8L2g2PjxoNSBjbGFzcz0iYm9sZCI+V0FIWVUgU0VUSVlBSkk8L2g1PjxoNj5GaXJlICYgSW5zdXJhbmNlPC9oNj48YSBjbGFzcz0iYnRuIGJ0bi1zdWNjZXNzIGJ0bi1mdWxsIGJ0bi14cyIgZGF0YS10b2dnbGU9Im1vZGFsIiBkYXRhLXRhcmdldD0iI3VjYXBhbk1vZGFsIiBkYXRhLWlzbG9nZWQ9IlQiIGRhdGEtbm9wZWs9Ijc1Mjk3NSIgZGF0YS1uYW1hPSJXQUhZVSBTRVRJWUFKSSI+QmVyaSB1Y2FwYW48L2E+PC9kaXY+PC9kaXY+ZAINDzwrAAkBAA8WBB4IRGF0YUtleXMWAB4LXyFJdGVtQ291bnQCCGQWEAIBD2QWAmYPFQoFMDk6MDAFMjg3Mjk5QUFOV0lKWklORyBSQURJTyBIVCAoMTIgSVRFTSkgLSBDT0xMRUNUSVZFIE5PLiBNMThQQjAwMzdBDEp1bSZwcmltZTthdAwyNyBKdWxpIDIwMTgFMDk6MDAFMTA6MDAISE8uIEJBUlUZUi4gUi4gVEVOREVSIFBVUkNIQVNJTkcgSRlBQU5XSUpaSU5HIFJBRElPIEhUICgxLi4uZAICD2QWAmYPFQoFMDk6MDAFMjg5MDMxVklERU8gQ09ORkVSRU5DRSBURVJLQUlUIFBFTkpFTEFTQU4gUEVOR0lTSUFOIEVSUgxKdW0mcHJpbWU7YXQMMjcgSnVsaSAyMDE4BTA5OjAwBTExOjMwCEhPLiBCQVJVG1IuIEtFUkpBIE1BTkFHRVIgUkVMIC0gTFQuMhlWSURFTyBDT05GRVJFTkNFIFRFUktBLi4uZAIDD2QWAmYPFQoFMDk6MDAFMjg5MjhDUEVNQlVLQUFOIFBFTkFXQVJBTitORUdPIE9JTCBESVNQRVJTQU5UIC0gQ09MTEVDVElWRSBOTy4gTTE4VEwwMDQ4QQxKdW0mcHJpbWU7YXQMMjcgSnVsaSAyMDE4BTA5OjAwBTEwOjAwCEhPLiBCQVJVG1IuIFIuIFRFTkRFUiBQVVJDSEFTSU5HIElJSRlQRU1CVUtBQU4gUEVOQVdBUkFOK05FLi4uZAIED2QWAmYPFQoFMDk6MDAFMjg5MTJMS0lDSyBPRkYgTUVFVElORyBQRUtFUkpBQU4gUEVSQkFJS0FOIC8gUkVXSU5ESU5HIE1PVE9SIDAxMVAxMTkgQU0gQVJFQSBGT0MtMgxKdW0mcHJpbWU7YXQMMjcgSnVsaSAyMDE4BTA5OjAwBTEwOjAwC0FSRUEgS0lMQU5HDlIuIFIuIFdPUktTSE9QGUtJQ0sgT0ZGIE1FRVRJTkcgUEVLRVIuLi5kAgUPZBYCZg8VCgUwOTozMAUyODkxN2pSQVBBVCBQUkFLVUFMSUZJS0FTSSBQRVJCQUlLQU4gREFOIFBFTUVMSUhBUkFBTiBTT09UIEJMT1dFUiBESSAxMUYtMSBQVC4gUEVSVEFNSU5BIChQRVJTRVJPKSBSVSBJViBDSUxBQ0FQDEp1bSZwcmltZTthdAwyNyBKdWxpIDIwMTgFMDk6MzAFMTA6MDAISE8uIEJBUlUXUi4gUi4gQ09OVFJBQ1QgT0ZGSUNFIEkZUkFQQVQgUFJBS1VBTElGSUtBU0kgUC4uLmQCBg9kFgJmDxUKBTA5OjMwBTI4OTE4OEFBTldJSlpJTkcgQ09OVFJPTCBWQUxWRSAoMDU0V1MtMTAzKSBDT0xMIE5PLiBNMThQQTkyMzBBDEp1bSZwcmltZTthdAwyNyBKdWxpIDIwMTgFMDk6MzAFMTE6MDAISE8uIEJBUlUaUi4gUi4gVEVOREVSIFBVUkNIQVNJTkcgSUkZQUFOV0lKWklORyBDT05UUk9MIFZBTC4uLmQCBw9kFgJmDxUKBTEwOjMwBTI4OTI1eVJBUEFUIEJVS0EgUEVOQVdBUkFOIFBFUkJBSUtBTi9QQVJUSUFMIFJFVFVCRSBDT05WRUNUSU9OIDg3Ri0yMDEgREkgQVJFQSBQQVJBWFlMRU5FIFBULiBQRVJUQU1JTkEgKFBFUlNFUk8pIFJVIElWIENJTEFDQVAMSnVtJnByaW1lO2F0DDI3IEp1bGkgMjAxOAUxMDozMAUxMTowMAhITy4gQkFSVRdSLiBSLiBDT05UUkFDVCBPRkZJQ0UgSRlSQVBBVCBCVUtBIFBFTkFXQVJBTiBQLi4uZAIID2QWAmYPFQoFMTM6MzAFMjg5MTVgUkFQQVQgUEVOSkVMQVNBTi9BQU5XSUpaSU5HIFJFQkFCQklUIEJFQVJJTkcgMjYwSzEwMS8xMDJBTSBQVC4gUEVSVEFNSU5BIChQRVJTRVJPKSBSVSBJViBDSUxBQ0FQDEp1bSZwcmltZTthdAwyNyBKdWxpIDIwMTgFMTM6MzAFMTM6NDUISE8uIEJBUlUXUi4gUi4gQ09OVFJBQ1QgT0ZGSUNFIEkZUkFQQVQgUEVOSkVMQVNBTi9BQU5XSS4uLmQCDw88KwAJAQAPFgQfAhYAHwMCCGQWEAIBD2QWAmYPFQkFMTI1NDgKTU9IT04gRElSSRBNT0hBTUFEIEhBVFRBIFIuCjI2LzA3LzIwMTgDMzI0ATAuPGkgY2xhc3M9ImZhIGZhLWJhcnMiIGFyaWEtaGlkZGVuPSJ0cnVlIj48L2k+IApNT0hPTiBESVJJAGQCAg9kFgJmDxUJBTEyNTQ3FlRBUyBMQVBUT1AgS0VUSU5HR0FMQU4OVEpBTkRSQSBTSUtPS08KMjAvMDcvMjAxOAM1NjkBMC48aSBjbGFzcz0iZmEgZmEtYmFycyIgYXJpYS1oaWRkZW49InRydWUiPjwvaT4gFlRBUyBMQVBUT1AgS0VUSU5HR0FMQU4AZAIDD2QWAmYPFQkFMTI1NDYaTUFOQ0lORyAgVFJJIFdVTEFOIElJIFBDRkMJUU9TQVJJRklOCjE5LzA3LzIwMTgDMzIzATAuPGkgY2xhc3M9ImZhIGZhLWJhcnMiIGFyaWEtaGlkZGVuPSJ0cnVlIj48L2k+IBpNQU5DSU5HICBUUkkgV1VMQU4gSUkgUENGQwBkAgQPZBYCZg8VCQUxMjU0NCxVUERBVEUgUEVTRVJUQSBBS1NJIEJFTEEgUEVSVEFNSU5BIC0gSkFLQVJUQSxTRVJJS0FUIFBFS0VSSkEgUEVSVEFNSU5BIFBBVFJBIFdJSkFZQUtVU1VNQQoxOC8wNy8yMDE4BDExOTEBMS48aSBjbGFzcz0iZmEgZmEtYmFycyIgYXJpYS1oaWRkZW49InRydWUiPjwvaT4gIVVQREFURSBQRVNFUlRBIEFLU0kgQkVMQSBQRVJUQS4uLgBkAgUPZBYCZg8VCQUxMjU0MxxCRVJJVEEgRFVLQSBPSUwgTU9WRU1FTlQgTkJNE09OQSBPTExZVklBIEFHVVNUSU4KMTcvMDcvMjAxOAM2NjYBMC48aSBjbGFzcz0iZmEgZmEtYmFycyIgYXJpYS1oaWRkZW49InRydWUiPjwvaT4gHEJFUklUQSBEVUtBIE9JTCBNT1ZFTUVOVCBOQk0AZAIGD2QWAmYPFQkFMTI1NDIUQkVSSVRBIERVS0EgVVRMLVJGQ0MKRElBUiBXQUhZVQoxMy8wNy8yMDE4AzczMgEwLjxpIGNsYXNzPSJmYSBmYS1iYXJzIiBhcmlhLWhpZGRlbj0idHJ1ZSI+PC9pPiAUQkVSSVRBIERVS0EgVVRMLVJGQ0MAZAIHD2QWAmYPFQkFMTI1NDEoTU9IT04gRElSSSBBTkRISUtBIFdJUkFTV0FTVElLQSAoNzQ3NTIwKRRBTkRISUtBIFdJUkFTV0FTVElLQQoxMS8wNy8yMDE4BDEwNTEBMC48aSBjbGFzcz0iZmEgZmEtYmFycyIgYXJpYS1oaWRkZW49InRydWUiPjwvaT4gIU1PSE9OIERJUkkgQU5ESElLQSBXSVJBU1dBU1RJSy4uLgBkAggPZBYCZg8VCQUxMjU0MBtBS1NJIFBFS0VSSkEgQkVMQSBQRVJUQU1JTkEsU0VSSUtBVCBQRUtFUkpBIFBFUlRBTUlOQSBQQVRSQSBXSUpBWUFLVVNVTUEKMTEvMDcvMjAxOAQxMDgxATAuPGkgY2xhc3M9ImZhIGZhLWJhcnMiIGFyaWEtaGlkZGVuPSJ0cnVlIj48L2k+IBtBS1NJIFBFS0VSSkEgQkVMQSBQRVJUQU1JTkEAZAIRDxYCHwEFkR48ZGl2IGNsYXNzPSJjb2wteHMtMTIgY29sLXNtLTEyIGNvbC1tZC00IG5vLXBhZGRpbmciPiAgICA8ZGl2IGNsYXNzPSJ0aXRsZS1wbGFjZXIiIHN0eWxlPSJ3aWR0aDogOTclO3BhZGRpbmctbGVmdDogMTVweDsiPiAgICAgICAgPGg1IGNsYXNzPSJib2xkIj5LRUdJQVRBTiBIU0UgQ09NTVVOSUNBVElPTiBESSBQSU5UVSAyIFRHLi4uPC9oNT4gICAgICAgIDxoNiBjbGFzcz0icG9zaXRpb24iPjI1LzA3LzIwMTg8L2g2PiAgICAgICAgPGg2PjxhIGNsYXNzPSJibHVlIiBocmVmPSJHYWxlcmlGb3RvLmFzcHg/aWQ9OTMyNSI+U2VlIGFsYnVtPC9hPjwvaDY+ICAgIDwvZGl2PiA8YSBocmVmPSJHYWxlcmlGb3RvLmFzcHg/aWQ9OTMyNSI+PGltZyBzdHlsZT0id2lkdGg6MzAycHg7aGVpZ2h0OjMwMnB4OyIgY2xhc3M9ImltZy1yZXNwb25zaXZlIHNxdWFyZS10aHVtYiIgc3JjPSJpbWdoYW5kbGVyLmFzaHg/Yz1GJmlkPTkzMjUmdT0xIj48L2E+PC9kaXY+PGRpdiBjbGFzcz0iY29sLXhzLTEyIGNvbC1zbS0xMiBjb2wtbWQtNCBuby1wYWRkaW5nIj4gIDxkaXYgY2xhc3M9ImNvbC14cy0xMiBjb2wtc20tMTIgY29sLW1kLTEyIG1haW4tbGlzdCI+ICAgIDxkaXYgY2xhc3M9ImNvbC14cy0xMiBjb2wtc20tMTIgY29sLW1kLTQgbm8tcGFkZGluZyI+ICAgICAgICA8YSBocmVmPSJHYWxlcmlGb3RvLmFzcHg/aWQ9OTMyNCI+PGltZyBzdHlsZT0id2lkdGg6ODVweDtoZWlnaHQ6ODVweDsiIGNsYXNzPSJpbWctdGh1bWIgaW1nLXJlc3BvbnNpdmUiIHNyYz0iaW1naGFuZGxlci5hc2h4P2M9RiZpZD05MzI0JnU9MSI+PC9hPiAgICA8L2Rpdj4gICAgPGRpdiBjbGFzcz0iY29sLXhzLTEyIGNvbC1zbS0xMiBjb2wtbWQtOCBuby1wYWRkaW5nIj4gICAgICAgIDxoNSBjbGFzcz0iYm9sZCI+TVdUIDogUFVMU0UgQ0hFQ0sgQkVDICYgQk9DPC9oNT4gICAgICAgIDxoNiBjbGFzcz0icG9zaXRpb24iPjI1LzA3LzIwMTg8L2g2PiAgICAgICAgPGg2PjxhIGNsYXNzPSJibHVlIiBocmVmPSJHYWxlcmlGb3RvLmFzcHg/aWQ9OTMyNCI+U2VlIGFsYnVtPC9hPjwvaDY+ICAgIDwvZGl2PiAgPC9kaXY+ICA8ZGl2IGNsYXNzPSJjb2wteHMtMTIgY29sLXNtLTEyIGNvbC1tZC0xMiBtYWluLWxpc3QiPiAgICA8ZGl2IGNsYXNzPSJjb2wteHMtMTIgY29sLXNtLTEyIGNvbC1tZC00IG5vLXBhZGRpbmciPiAgICAgICAgPGEgaHJlZj0iR2FsZXJpRm90by5hc3B4P2lkPTkzMjMiPjxpbWcgc3R5bGU9IndpZHRoOjg1cHg7aGVpZ2h0Ojg1cHg7IiBjbGFzcz0iaW1nLXRodW1iIGltZy1yZXNwb25zaXZlIiBzcmM9ImltZ2hhbmRsZXIuYXNoeD9jPUYmaWQ9OTMyMyZ1PTEiPjwvYT4gICAgPC9kaXY+ICAgIDxkaXYgY2xhc3M9ImNvbC14cy0xMiBjb2wtc20tMTIgY29sLW1kLTggbm8tcGFkZGluZyI+ICAgICAgICA8aDUgY2xhc3M9ImJvbGQiPkJJS0UgVE8gV09SSzwvaDU+ICAgICAgICA8aDYgY2xhc3M9InBvc2l0aW9uIj4yNS8wNy8yMDE4PC9oNj4gICAgICAgIDxoNj48YSBjbGFzcz0iYmx1ZSIgaHJlZj0iR2FsZXJpRm90by5hc3B4P2lkPTkzMjMiPlNlZSBhbGJ1bTwvYT48L2g2PiAgICA8L2Rpdj4gIDwvZGl2PiAgPGRpdiBjbGFzcz0iY29sLXhzLTEyIGNvbC1zbS0xMiBjb2wtbWQtMTIgbWFpbi1saXN0Ij4gICAgPGRpdiBjbGFzcz0iY29sLXhzLTEyIGNvbC1zbS0xMiBjb2wtbWQtNCBuby1wYWRkaW5nIj4gICAgICAgIDxhIGhyZWY9IkdhbGVyaUZvdG8uYXNweD9pZD05MzIyIj48aW1nIHN0eWxlPSJ3aWR0aDo4NXB4O2hlaWdodDo4NXB4OyIgY2xhc3M9ImltZy10aHVtYiBpbWctcmVzcG9uc2l2ZSIgc3JjPSJpbWdoYW5kbGVyLmFzaHg/Yz1GJmlkPTkzMjImdT0xIj48L2E+ICAgIDwvZGl2PiAgICA8ZGl2IGNsYXNzPSJjb2wteHMtMTIgY29sLXNtLTEyIGNvbC1tZC04IG5vLXBhZGRpbmciPiAgICAgICAgPGg1IGNsYXNzPSJib2xkIj5NQUxBTSBTSUxBSFRVUkFITUkgVVRJTElUSUVTPC9oNT4gICAgICAgIDxoNiBjbGFzcz0icG9zaXRpb24iPjI1LzA3LzIwMTg8L2g2PiAgICAgICAgPGg2PjxhIGNsYXNzPSJibHVlIiBocmVmPSJHYWxlcmlGb3RvLmFzcHg/aWQ9OTMyMiI+U2VlIGFsYnVtPC9hPjwvaDY+ICAgIDwvZGl2PiAgPC9kaXY+PC9kaXY+PGRpdiBjbGFzcz0iY29sLXhzLTEyIGNvbC1zbS0xMiBjb2wtbWQtNCBuby1wYWRkaW5nIj4gIDxkaXYgY2xhc3M9ImNvbC14cy0xMiBjb2wtc20tMTIgY29sLW1kLTEyIG1haW4tbGlzdCI+ICAgIDxkaXYgY2xhc3M9ImNvbC14cy0xMiBjb2wtc20tMTIgY29sLW1kLTQgbm8tcGFkZGluZyI+ICAgICAgICA8YSBocmVmPSJHYWxlcmlGb3RvLmFzcHg/aWQ9OTMyMSI+PGltZyBzdHlsZT0id2lkdGg6ODVweDtoZWlnaHQ6ODVweDsiIGNsYXNzPSJpbWctdGh1bWIgaW1nLXJlc3BvbnNpdmUiIHNyYz0iaW1naGFuZGxlci5hc2h4P2M9RiZpZD05MzIxJnU9MSI+PC9hPiAgICA8L2Rpdj4gICAgPGRpdiBjbGFzcz0iY29sLXhzLTEyIGNvbC1zbS0xMiBjb2wtbWQtOCBuby1wYWRkaW5nIj4gICAgICAgIDxoNSBjbGFzcz0iYm9sZCI+SFVUIEtXUCBLRSAzNDwvaDU+ICAgICAgICA8aDYgY2xhc3M9InBvc2l0aW9uIj4yNC8wNy8yMDE4PC9oNj4gICAgICAgIDxoNj48YSBjbGFzcz0iYmx1ZSIgaHJlZj0iR2FsZXJpRm90by5hc3B4P2lkPTkzMjEiPlNlZSBhbGJ1bTwvYT48L2g2PiAgICA8L2Rpdj4gIDwvZGl2PiAgPGRpdiBjbGFzcz0iY29sLXhzLTEyIGNvbC1zbS0xMiBjb2wtbWQtMTIgbWFpbi1saXN0Ij4gICAgPGRpdiBjbGFzcz0iY29sLXhzLTEyIGNvbC1zbS0xMiBjb2wtbWQtNCBuby1wYWRkaW5nIj4gICAgICAgIDxhIGhyZWY9IkdhbGVyaUZvdG8uYXNweD9pZD05MzIwIj48aW1nIHN0eWxlPSJ3aWR0aDo4NXB4O2hlaWdodDo4NXB4OyIgY2xhc3M9ImltZy10aHVtYiBpbWctcmVzcG9uc2l2ZSIgc3JjPSJpbWdoYW5kbGVyLmFzaHg/Yz1GJmlkPTkzMjAmdT0xIj48L2E+ICAgIDwvZGl2PiAgICA8ZGl2IGNsYXNzPSJjb2wteHMtMTIgY29sLXNtLTEyIGNvbC1tZC04IG5vLXBhZGRpbmciPiAgICAgICAgPGg1IGNsYXNzPSJib2xkIj5NQUxBTSBLRUJFUlNBTUFBTiBLRUxVQVIgQkVTQVIgT0lMIE1PVkVNLi4uPC9oNT4gICAgICAgIDxoNiBjbGFzcz0icG9zaXRpb24iPjI0LzA3LzIwMTg8L2g2PiAgICAgICAgPGg2PjxhIGNsYXNzPSJibHVlIiBocmVmPSJHYWxlcmlGb3RvLmFzcHg/aWQ9OTMyMCI+U2VlIGFsYnVtPC9hPjwvaDY+ICAgIDwvZGl2PiAgPC9kaXY+ICA8ZGl2IGNsYXNzPSJjb2wteHMtMTIgY29sLXNtLTEyIGNvbC1tZC0xMiBtYWluLWxpc3QiPiAgICA8ZGl2IGNsYXNzPSJjb2wteHMtMTIgY29sLXNtLTEyIGNvbC1tZC00IG5vLXBhZGRpbmciPiAgICAgICAgPGEgaHJlZj0iR2FsZXJpRm90by5hc3B4P2lkPTkzMTciPjxpbWcgc3R5bGU9IndpZHRoOjg1cHg7aGVpZ2h0Ojg1cHg7IiBjbGFzcz0iaW1nLXRodW1iIGltZy1yZXNwb25zaXZlIiBzcmM9ImltZ2hhbmRsZXIuYXNoeD9jPUYmaWQ9OTMxNyZ1PTEiPjwvYT4gICAgPC9kaXY+ICAgIDxkaXYgY2xhc3M9ImNvbC14cy0xMiBjb2wtc20tMTIgY29sLW1kLTggbm8tcGFkZGluZyI+ICAgICAgICA8aDUgY2xhc3M9ImJvbGQiPkFLU0kgQkVMQSBQRVJUQU1JTkE8L2g1PiAgICAgICAgPGg2IGNsYXNzPSJwb3NpdGlvbiI+MjQvMDcvMjAxODwvaDY+ICAgICAgICA8aDY+PGEgY2xhc3M9ImJsdWUiIGhyZWY9IkdhbGVyaUZvdG8uYXNweD9pZD05MzE3Ij5TZWUgYWxidW08L2E+PC9oNj4gICAgPC9kaXY+ICA8L2Rpdj48YSBocmVmPSJHYWxlcmlGb3RvLmFzcHgiIGNsYXNzPSJidG4gYnRuLWRlZmF1bHQgcHVsbC1yaWdodCBidG4teHMiIHN0eWxlPSJtYXJnaW46MTBweDsiPlZpZXcgQWxsPC9hPjwvZGl2PmQCGQ8PFgIfAQURSVA6IDEwLjU0LjEzMi4xMThkZGSUX+WmDewtLj/7VtBvEPteWLfu+QGKHl437AlWPzv0iw==" />
+</div>
+
+
+
+
+<!-- =================================  TOP :PJS & TEAM MANAGEMENT ================================== -->
+<div class="col-xs-12 col-sm-12 col-md-9 main-body">
+			<div class="head"><img class="icon-title" src="assets/images/icons/ic_tie.png"> TIM MANAJEMEN</div>
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<td class="no-padding">
+							<div class="product-tabs outer-top-smal  wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+				
+								<ul id="product-tabs" class="nav nav-tabs nav-tab-cell-detail">
+									<li class="active"><a data-toggle="tab" href="#description">PEJABAT SEMENTARA</a></li>
+									<li class=""><a data-toggle="tab" href="#tags">MANAJEMEN & SECTION HEAD</a></li>
+								</ul><!-- /.nav-tabs #product-tabs -->
+					
+
+								<div class="tab-content">
+									<div id="description" class="tab-pane active">
+                                        <marquee  behavior="scroll" direction="left">
+                                             <div class="marquee-content">
+<img class="small-square-thumb pull-left img-responsive" src="images/pekerja/702361.jpg">
+<h5 class="bold">RUMANTO</h5>
+<h6 class="position">Pjs. Section Head LOC II</h6>
+</div>
+<div class="marquee-content">
+<img class="small-square-thumb pull-left img-responsive" src="images/pekerja/744608.jpg">
+<h5 class="bold">DINA SAFITRI DEWI</h5>
+<h6 class="position">Pjs. Refinery Internal Audit Cilaca...</h6>
+</div>
+<div class="marquee-content">
+<img class="small-square-thumb pull-left img-responsive" src="images/pekerja/750101.jpg">
+<h5 class="bold">BAMBANG AKRIANTO</h5>
+<h6 class="position">Pjs. Manager General Affairs</h6>
+</div>
+<div class="marquee-content">
+<img class="small-square-thumb pull-left img-responsive" src="images/pekerja/702215.jpg">
+<h5 class="bold">SAMSUDIN ALI</h5>
+<h6 class="position">Pjs. Section Head Inventory Control</h6>
+</div>
+<div class="marquee-content">
+<img class="small-square-thumb pull-left img-responsive" src="images/pekerja/no_photo.jpg">
+<h5 class="bold">HENDRA SETIAWAN</h5>
+<h6 class="position">Pjs. Region Manager Marine IV</h6>
+</div>
+<div class="marquee-content">
+<img class="small-square-thumb pull-left img-responsive" src="images/pekerja/630669.jpg">
+<h5 class="bold">HESTI NURWASONO</h5>
+<h6 class="position">Pjs. Section Head Plant Reliability</h6>
+</div>
+<div class="marquee-content">
+<img class="small-square-thumb pull-left img-responsive" src="images/pekerja/no_photo.jpg">
+<h5 class="bold">CAHYO WIDIANTORO</h5>
+<h6 class="position">Pjs. Finance RU IV Manager</h6>
+</div>
+
+                                       </marquee>
+										<a href="pjs.aspx" class="btn btn-default pull-right btn-xs" style="margin:10px;">View All</a>
+								    </div><!-- /.tab-pane -->
+
+									<div id="tags" class="tab-pane">
+										<marquee  behavior="scroll" direction="left">
+                                             <div class="marquee-content">
+<img class="small-square-thumb pull-left img-responsive" src="images/pekerja/708964.jpg">
+<h5 class="bold">DJOKO PRIYONO</h5>
+<h6 class="position">GM REFINERY UNIT IV - CILACAP</h6>
+</div>
+<div class="marquee-content">
+<img class="small-square-thumb pull-left img-responsive" src="images/pekerja/717517.jpg">
+<h5 class="bold">NUR QADIM</h5>
+<h6 class="position">Sr Manager Operation & Manufacturing</h6>
+</div>
+<div class="marquee-content">
+<img class="small-square-thumb pull-left img-responsive" src="images/pekerja/714488.jpg">
+<h5 class="bold">DEDE DARSONO</h5>
+<h6 class="position">MANAGER PRODUCTION I</h6>
+</div>
+<div class="marquee-content">
+<img class="small-square-thumb pull-left img-responsive" src="images/pekerja/714471.jpg">
+<h5 class="bold">FREDY PRIJASETIA</h5>
+<h6 class="position">Manager Production II</h6>
+</div>
+<div class="marquee-content">
+<img class="small-square-thumb pull-left img-responsive" src="images/pekerja/no_photo.jpg">
+<h5 class="bold">AGUNG SUYOSO</h5>
+<h6 class="position">Manager Refinery Planning & Optimiz...</h6>
+</div>
+<div class="marquee-content">
+<img class="small-square-thumb pull-left img-responsive" src="images/pekerja/no_photo.jpg">
+<h5 class="bold">IWAN KURNIAWAN</h5>
+<h6 class="position">Manager Maintenance Planning & Supp...</h6>
+</div>
+<div class="marquee-content">
+<img class="small-square-thumb pull-left img-responsive" src="images/pekerja/717744.jpg">
+<h5 class="bold">ISKANDAR</h5>
+<h6 class="position">Manager Maintenance Planning & Support</h6>
+</div>
+
+                                       </marquee>
+										<a href="teammanagement.aspx" class="btn btn-default pull-right btn-xs" style="margin:10px;">View All</a>
+									</div><!-- /.tab-pane -->
+
+								</div><!-- /.tab-content -->
+
+							</div>
+						</td>
+					</tr>
+				</tbody><!-- /tbody -->
+			</table>
+		</div>     
+<!-- END =================================  TOP :PJS & TEAM MANAGEMENT ================================== -->
+
+<!---- PENGUMUMAN ---->
+		<div class="col-md-6 col-sm-12 col-xs-12 main-body outer-bottom-xxs">
+			<div class="head"><img class="icon-title" src="assets/images/icons/ic_announcement.png"> PENGUMUMAN
+			</div>
+            <div class="col-xs-12 col-sm-12 col-md-12 pinned-title">
+                <h5><i class="fa fa-thumb-tack"></i> Pinned Post</h5>
+                <a href="Pengumuman.aspx" class="pull-right link-pull">View All</a>
+            </div>
+            <div class="item active">
+    <div class="col-xs-12 col-sm-12 col-md-12 no-padding thumb-list">
+        <div class="col-xs-12 col-sm-12 col-md-4 no-padding">
+<a href="Pengumuman.aspx?id=8723">
+            <div class="title-placer">
+                <h6>26/07/2018</h6>
+                <h5 class="bold">HEALTHY TALK & SENAM JUMAT PAGI</h5>
+                <h6 class="green">Dibaca 107 kali</h6>
+            </div>
+            <img id='imgPengumuman_8723' class="img-responsive square-thumb" src="imghandler.ashx?c=P&id=8723" style="width:204px;height:204px;max-height:204px;max-width:204px;">
+            </a>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 no-padding">
+<a href="Pengumuman.aspx?id=8717">
+            <div class="title-placer">
+                <h6>25/07/2018</h6>
+                <h5 class="bold">2018 EMPLOYEE SURVEY CORPORATE WELL...</h5>
+                <h6 class="green">Dibaca 153 kali</h6>
+            </div>
+        <img id='imgPengumuman_8717' class="img-responsive square-thumb" src="imghandler.ashx?c=P&id=8717" style="width:204px;height:204px;max-height:204px;max-width:204px;">
+        </a>
+    </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 no-padding">
+<a href="Pengumuman.aspx?id=8711">
+            <div class="title-placer">
+                <h6>19/07/2018</h6>
+                <h5 class="bold">MARI BER QURBAN.......&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+                <h6 class="green">Dibaca 431 kali</h6>
+            </div>
+        <img id='imgPengumuman_8711' class="img-responsive square-thumb" src="imghandler.ashx?c=P&id=8711" style="width:204px;height:204px;max-height:204px;max-width:204px;">
+        </a>
+    </div>
+    </div></div>
+            <div id="hotPengumuman"></div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 pinned-title">
+                <h5><i class="fa fa-bullhorn"></i> Regular Post</h5>
+                <a href="Pengumuman.aspx" class="pull-right link-pull">View All</a>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 no-padding thumb-list">
+ <div class="col-xs-12 col-sm-12 col-md-4 no-padding">
+<a href="Pengumuman.aspx?id=8727">
+  <div class="title-placer">
+     <h6>27/07/2018</h6>
+     <h5 class="bold">DAFTAR ON DUTY RU IV TANGGAL 28 - 2...</h5>
+    <h6 class="green">Dibaca 14 kali</h6>
+  </div>
+<img id='imgPengumuman_8727' class="img-responsive square-thumb" src="imghandler.ashx?c=P&id=8727" style="width:204px;height:204px;max-height:204px;max-width:204px;">
+</a>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-4 no-padding">
+<a href="Pengumuman.aspx?id=8726">
+  <div class="title-placer">
+     <h6>27/07/2018</h6>
+     <h5 class="bold">HADIRILAH PENGAJIAN PELEPASAN HAJI....</h5>
+    <h6 class="green">Dibaca 19 kali</h6>
+  </div>
+<img id='imgPengumuman_8726' class="img-responsive square-thumb" src="imghandler.ashx?c=P&id=8726" style="width:204px;height:204px;max-height:204px;max-width:204px;">
+</a>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-4 no-padding">
+<a href="Pengumuman.aspx?id=8725">
+  <div class="title-placer">
+     <h6>27/07/2018</h6>
+     <h5 class="bold">JADWAL PELATIHAN DIREKTORAT PENGOLA...</h5>
+    <h6 class="green">Dibaca 31 kali</h6>
+  </div>
+<img id='imgPengumuman_8725' class="img-responsive square-thumb" src="imghandler.ashx?c=P&id=8725" style="width:204px;height:204px;max-height:204px;max-width:204px;">
+</a>
+</div>
+</div><div class="col-xs-12 col-sm-12 col-md-12 no-padding thumb-list">
+<div class="col-xs-12 col-sm-12 col-md-4 no-padding">
+<a href="Pengumuman.aspx?id=8716">
+  <div class="title-placer">
+     <h6>24/07/2018</h6>
+     <h5 class="bold">AYO RAMAIKAN KELOMPOK SENAM YOGA</h5>
+    <h6 class="green">Dibaca 279 kali</h6>
+  </div>
+<img id='imgPengumuman_8716' class="img-responsive square-thumb" src="imghandler.ashx?c=P&id=8716" style="width:204px;height:204px;max-height:204px;max-width:204px;">
+</a>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-4 no-padding">
+<a href="Pengumuman.aspx?id=8714">
+  <div class="title-placer">
+     <h6>23/07/2018</h6>
+     <h5 class="bold">JADWAL PLAN VISIT 23 S/D 27 JULI 20...</h5>
+    <h6 class="green">Dibaca 154 kali</h6>
+  </div>
+<img id='imgPengumuman_8714' class="img-responsive square-thumb" src="imghandler.ashx?c=P&id=8714" style="width:204px;height:204px;max-height:204px;max-width:204px;">
+</a>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-4 no-padding">
+<a href="Pengumuman.aspx?id=8713">
+  <div class="title-placer">
+     <h6>20/07/2018</h6>
+     <h5 class="bold">PETUGAS STAND BY / PIKET JAGA GUDAN...</h5>
+    <h6 class="green">Dibaca 138 kali</h6>
+  </div>
+<img id='imgPengumuman_8713' class="img-responsive square-thumb" src="imghandler.ashx?c=P&id=8713" style="width:204px;height:204px;max-height:204px;max-width:204px;">
+</a>
+</div>
+</div>
+
+           <div id="regPengumuman"></div>
+		</div>
+<!---END PENGUMUMAN -->
+<!-- EMIS -->
+<div class="col-xs-12 col-sm-12 col-md-3 main-body">
+  <div class="panel panel-default panel-style">
+    <div class="panel-heading panel-right">EMIS</div>
+    <div class="panel-body panel-content">
+    	<ul>
+    								<li class = "list-panel"><i class="fa fa-clock-o"> 09:00 </i> - 
+                                    <a target="_blank" href='http://simops.pertamina.com/eventmgmt/preview.aspx?id=28729' class="protip" 
+                                        data-pt-title="<b>AANWIJZING RADIO HT (12 ITEM) - COLLECTIVE NO. M18PB0037A</b><hr><small><i class=&#34;fa fa-calendar&#34; aria-hidden=&#34;true&#34;></i> Jum&prime;at, 27 Juli 2018 | <i class=&#34;fa fa-clock-o&#34; aria-hidden=&#34;true&#34;></i> 09:00 - 10:00 wib.<br><i class=&#34;fa fa-map-marker&#34; aria-hidden=&#34;true&#34;></i>
+ HO. BARU / R. R. TENDER PURCHASING I</small>">
+                                    AANWIJZING RADIO HT (1...
+                                    </a><br /></li>
+                                    <li  class = "list-panel"> <i class="fa fa-clock-o"> 09:00 </i> - 
+                                    <a target="_blank" href='http://simops.pertamina.com/eventmgmt/preview.aspx?id=28903' class="protip" 
+                                        data-pt-title="<b>VIDEO CONFERENCE TERKAIT PENJELASAN PENGISIAN ERR</b><hr><small><i class=&#34;fa fa-calendar&#34; aria-hidden=&#34;true&#34;></i> Jum&prime;at, 27 Juli 2018 | <i class=&#34;fa fa-clock-o&#34; aria-hidden=&#34;true&#34;></i> 09:00 - 11:30 wib.<br><i class=&#34;fa fa-map-marker&#34; aria-hidden=&#34;true&#34;></i>
+ HO. BARU / R. KERJA MANAGER REL - LT.2</small>">
+                                    VIDEO CONFERENCE TERKA...
+                                    </a><br /></li>
+                                    <li  class = "list-panel"><i class="fa fa-clock-o"> 09:00 </i> - 
+                                    <a target="_blank" href='http://simops.pertamina.com/eventmgmt/preview.aspx?id=28928' class="protip" 
+                                        data-pt-title="<b>PEMBUKAAN PENAWARAN+NEGO OIL DISPERSANT - COLLECTIVE NO. M18TL0048A</b><hr><small><i class=&#34;fa fa-calendar&#34; aria-hidden=&#34;true&#34;></i> Jum&prime;at, 27 Juli 2018 | <i class=&#34;fa fa-clock-o&#34; aria-hidden=&#34;true&#34;></i> 09:00 - 10:00 wib.<br><i class=&#34;fa fa-map-marker&#34; aria-hidden=&#34;true&#34;></i>
+ HO. BARU / R. R. TENDER PURCHASING III</small>">
+                                    PEMBUKAAN PENAWARAN+NE...
+                                    </a><br /></li>
+                                    <li  class = "list-panel"><i class="fa fa-clock-o"> 09:00 </i> - 
+                                    <a target="_blank" href='http://simops.pertamina.com/eventmgmt/preview.aspx?id=28912' class="protip" 
+                                        data-pt-title="<b>KICK OFF MEETING PEKERJAAN PERBAIKAN / REWINDING MOTOR 011P119 AM AREA FOC-2</b><hr><small><i class=&#34;fa fa-calendar&#34; aria-hidden=&#34;true&#34;></i> Jum&prime;at, 27 Juli 2018 | <i class=&#34;fa fa-clock-o&#34; aria-hidden=&#34;true&#34;></i> 09:00 - 10:00 wib.<br><i class=&#34;fa fa-map-marker&#34; aria-hidden=&#34;true&#34;></i>
+ AREA KILANG / R. R. WORKSHOP</small>">
+                                    KICK OFF MEETING PEKER...
+                                    </a><br /></li>
+                                    <li  class = "list-panel"><i class="fa fa-clock-o"> 09:30 </i> - 
+                                    <a target="_blank" href='http://simops.pertamina.com/eventmgmt/preview.aspx?id=28917' class="protip" 
+                                        data-pt-title="<b>RAPAT PRAKUALIFIKASI PERBAIKAN DAN PEMELIHARAAN SOOT BLOWER DI 11F-1 PT. PERTAMINA (PERSERO) RU IV CILACAP</b><hr><small><i class=&#34;fa fa-calendar&#34; aria-hidden=&#34;true&#34;></i> Jum&prime;at, 27 Juli 2018 | <i class=&#34;fa fa-clock-o&#34; aria-hidden=&#34;true&#34;></i> 09:30 - 10:00 wib.<br><i class=&#34;fa fa-map-marker&#34; aria-hidden=&#34;true&#34;></i>
+ HO. BARU / R. R. CONTRACT OFFICE I</small>">
+                                    RAPAT PRAKUALIFIKASI P...
+                                    </a><br /></li>
+                                    <li  class = "list-panel"><i class="fa fa-clock-o"> 09:30 </i> - 
+                                    <a target="_blank" href='http://simops.pertamina.com/eventmgmt/preview.aspx?id=28918' class="protip" 
+                                        data-pt-title="<b>AANWIJZING CONTROL VALVE (054WS-103) COLL NO. M18PA9230A</b><hr><small><i class=&#34;fa fa-calendar&#34; aria-hidden=&#34;true&#34;></i> Jum&prime;at, 27 Juli 2018 | <i class=&#34;fa fa-clock-o&#34; aria-hidden=&#34;true&#34;></i> 09:30 - 11:00 wib.<br><i class=&#34;fa fa-map-marker&#34; aria-hidden=&#34;true&#34;></i>
+ HO. BARU / R. R. TENDER PURCHASING II</small>">
+                                    AANWIJZING CONTROL VAL...
+                                    </a><br /></li>
+                                    <li  class = "list-panel"><i class="fa fa-clock-o"> 13:30 </i> - 
+                                    <a target="_blank" href='http://simops.pertamina.com/eventmgmt/preview.aspx?id=28915' class="protip" 
+                                        data-pt-title="<b>RAPAT PENJELASAN/AANWIJZING REBABBIT BEARING 260K101/102AM PT. PERTAMINA (PERSERO) RU IV CILACAP</b><hr><small><i class=&#34;fa fa-calendar&#34; aria-hidden=&#34;true&#34;></i> Jum&prime;at, 27 Juli 2018 | <i class=&#34;fa fa-clock-o&#34; aria-hidden=&#34;true&#34;></i> 13:30 - 13:45 wib.<br><i class=&#34;fa fa-map-marker&#34; aria-hidden=&#34;true&#34;></i>
+ HO. BARU / R. R. CONTRACT OFFICE I</small>">
+                                    RAPAT PENJELASAN/AANWI...
+                                    </a><br /></li>
+                                    <li  class = "list-panel"><i class="fa fa-clock-o"> 10:30 </i> - 
+                                    <a target="_blank" href='http://simops.pertamina.com/eventmgmt/preview.aspx?id=28925' class="protip" 
+                                        data-pt-title="<b>RAPAT BUKA PENAWARAN PERBAIKAN/PARTIAL RETUBE CONVECTION 87F-201 DI AREA PARAXYLENE PT. PERTAMINA (PERSERO) RU IV CILACAP</b><hr><small><i class=&#34;fa fa-calendar&#34; aria-hidden=&#34;true&#34;></i> Jum&prime;at, 27 Juli 2018 | <i class=&#34;fa fa-clock-o&#34; aria-hidden=&#34;true&#34;></i> 10:30 - 11:00 wib.<br><i class=&#34;fa fa-map-marker&#34; aria-hidden=&#34;true&#34;></i>
+ HO. BARU / R. R. CONTRACT OFFICE I</small>">
+                                    RAPAT BUKA PENAWARAN P...
+                                    </a><br /></li>
+        </ul>
+        <a href="http://simops.pertamina.com/eventmgmt" target="_blank" class="btn btn-panel pull-right btn-xs" style="color:#ffffff;">View All</a>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!---- ULTAH -------->
+
+<div class="col-xs-12 col-sm-12 col-md-3 main-body">
+  <div class="panel panel-default panel-style">
+    <div class="panel-heading panel-right">ULANG TAHUN HARI INI</div>
+    <div class="panel-body panel-content">
+							<div id="myCarousel3" class="carousel slide" data-ride="carousel">
+								<div class="carousel-inner" role="listbox">
+									<div class="item active col-xs-12 col-sm-12 col-md-12 no-padding"><div class="col-xs-12 col-sm-12 col-md-6 no-padding">   <img class="img-thumb img-responsive" src="assets/images/pekerja/752779.jpg"></div><div class="col-xs-12 col-sm-12 col-md-6 no-padding"> <h6 class="blue">752779</h6><h5 class="bold">Ultah 1</h5><h6>Laboratory</h6><a class="btn btn-success btn-full btn-xs" data-toggle="modal" data-target="#ucapanModal" data-isloged="T" data-nopek="752779" data-nama="ALFI HASAN">Beri ucapan</a></div></div><div class="item col-xs-12 col-sm-12 col-md-12 no-padding"><div class="col-xs-12 col-sm-12 col-md-6 no-padding">   <img class="img-thumb img-responsive" src="assets/images/pekerja/752975.jpg"></div><div class="col-xs-12 col-sm-12 col-md-6 no-padding"> <h6 class="blue">752975</h6><h5 class="bold">Ultah 2</h5><h6>Fire & Insurance</h6><a class="btn btn-success btn-full btn-xs" data-toggle="modal" data-target="#ucapanModal" data-isloged="T" data-nopek="752975" data-nama="WAHYU SETIYAJI">Beri ucapan</a></div></div>
+								</div>
+								<!-- Left and right controls -->
+							    <a class="left carousel-control" href="#myCarousel3" role="button" data-slide="prev">
+							      <span class="fa fa-angle-left fa-lg" aria-hidden="true"></span>
+							      <span class="sr-only">Previous</span>
+							    </a>
+							    <a class="right carousel-control" href="#myCarousel3" role="button" data-slide="next">
+							      <span class="fa fa-angle-right fa-lg" aria-hidden="true"></span>
+							      <span class="sr-only">Next</span>
+							    </a>
+							</div><br>
+							<a href="http://simops.pertamina.com/eventmgmt" target="_blank" class="btn btn-panel pull-right btn-xs" style="color:#ffffff;">View All</a>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- END ULTAH---->
+
+<!-- TEAM MANAJEMEN -->
+<div class="col-xs-12 col-sm-12 col-md-3 main-body">
+  <div class="panel panel-default panel-style">
+    <div class="panel-heading panel-right">TEAM MANAJEMEN</div>
+    <div class="panel-body panel-content">
+
+  <ul class="nav nav-pills nav-justified">
+    <li class="active"><a data-toggle="tab" href="#pjs">Pejabat Sementara</a></li>
+    <li><a data-toggle="tab" href="#msh">Manajemen & Section Head</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="pjs" class="tab-pane fade in active">
+							<div id="myCarousel4" class="carousel slide" data-ride="carousel">
+								<div class="carousel-inner" role="listbox">
+									<div class="item active col-xs-12 col-sm-12 col-md-12 no-padding"><div class="col-xs-12 col-sm-12 col-md-6 no-padding">   <img class="img-thumb img-responsive img-tm" src="assets/images/pekerja/752779.jpg"></div><div class="col-xs-12 col-sm-12 col-md-6 team-manajemen"> <h5 class="bold">Pejabat 1</h5><h6>PJS. SECTION HEAD LOC II</h6></div></div><div class="item col-xs-12 col-sm-12 col-md-12 no-padding"><div class="col-xs-12 col-sm-12 col-md-6 ">   <img class="img-thumb img-responsive img-tm" src="assets/images/pekerja/752975.jpg"></div><div class="col-xs-12 col-sm-12 col-md-6 team-manajemen"><h5 class="bold">Pejabat 2</h5><h6>PJS. MANAGER GENERAL AFFAIRS
+ 								</h6></div></div>
+								</div>
+								<!-- Left and right controls -->
+							    <a class="left carousel-control" href="#myCarousel4" role="button" data-slide="prev">
+							      <span class="fa fa-angle-left fa-lg" aria-hidden="true"></span>
+							      <span class="sr-only">Previous</span>
+							    </a>
+							    <a class="right carousel-control" href="#myCarousel4" role="button" data-slide="next">
+							      <span class="fa fa-angle-right fa-lg" aria-hidden="true"></span>
+							      <span class="sr-only">Next</span>
+							    </a>
+							</div>
+							<br>
+							<a href="#linkpjs" target="_blank" class="btn btn-panel pull-right btn-xs" style="color:#ffffff;">View All</a>
+    </div>
+    <div id="msh" class="tab-pane fade">
+<div id="myCarousel5" class="carousel slide" data-ride="carousel">
+								<div class="carousel-inner" role="listbox">
+									<div class="item active col-xs-12 col-sm-12 col-md-12 no-padding"><div class="col-xs-12 col-sm-12 col-md-6 no-padding">   <img class="img-thumb img-responsive img-tm" src="assets/images/pekerja/752779.jpg"></div><div class="col-xs-12 col-sm-12 col-md-6 team-manajemen"><h5 class="bold">MSH 1</h5><h6>GM REFINERY UNIT IV - CILACAP</h6></div></div><div class="item col-xs-12 col-sm-12 col-md-12 no-padding"><div class="col-xs-12 col-sm-12 col-md-6 ">   <img class="img-thumb img-responsive img-tm" src="assets/images/pekerja/752975.jpg"></div><div class="col-xs-12 col-sm-12 col-md-6 team-manajemen"> <h5 class="bold">MSH 2</h5><h6>R MANAGER OPERATION & MANUFACTURING
+ </h6></div></div>
+								</div>
+								<!-- Left and right controls -->
+							    <a class="left carousel-control" href="#myCarousel5" role="button" data-slide="prev">
+							      <span class="fa fa-angle-left fa-lg" aria-hidden="true"></span>
+							      <span class="sr-only">Previous</span>
+							    </a>
+							    <a class="right carousel-control" href="#myCarousel5" role="button" data-slide="next">
+							      <span class="fa fa-angle-right fa-lg" aria-hidden="true"></span>
+							      <span class="sr-only">Next</span>
+							    </a>
+							</div>
+							<br>
+							<a href="#linkmsh" target="_blank" class="btn btn-panel pull-right btn-xs" style="color:#ffffff;">View All</a>
+    </div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- END TEAM MANAJEMEN -->
+
+<!--- GOSIP --->
+
+<!-- 	<div class="col-xs-12 col-sm-12 col-md-3 main-body">
+			<div class="head"><img class="icon-title" src="assets/images/icons/ic_forum.png"> FORUM GOSIP</div>
+				<div class="table-responsive">
+				    <table id="ctl00_ctpIsi_dvGosip" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;">
+	<tr>
+		<td>
+                                <table class="table table-bordered">
+					            <tbody>
+                                <tr class="list-bordered">
+							    <td>
+                            </td>
+	</tr><tr>
+		<td>
+								   <a href="Gosip.aspx?id=12548" class="protip"  data-pt-title="<b>MOHON DIRI</b><br><h6>Oleh MOHAMAD HATTA R.<br /><i class=&#34;fa fa-calendar&#34; aria-hidden=&#34;true&#34;></i> 26/07/2018 <i class=&#34;fa fa-eye&#34; aria-hidden=&#34;true&#34;></i> 324 <i class=&#34;fa fa-comments-o&#34; aria-hidden=&#34;true&#34;></i> 0</h6>">
+                                       <i class="fa fa-bars" aria-hidden="true"></i> 
+                                       MOHON DIRI
+                                    </a><br />
+                            </td>
+	</tr><tr>
+		<td>
+								   <a href="Gosip.aspx?id=12547" class="protip"  data-pt-title="<b>TAS LAPTOP KETINGGALAN</b><br><h6>Oleh TJANDRA SIKOKO<br /><i class=&#34;fa fa-calendar&#34; aria-hidden=&#34;true&#34;></i> 20/07/2018 <i class=&#34;fa fa-eye&#34; aria-hidden=&#34;true&#34;></i> 569 <i class=&#34;fa fa-comments-o&#34; aria-hidden=&#34;true&#34;></i> 0</h6>">
+                                       <i class="fa fa-bars" aria-hidden="true"></i> 
+                                       TAS LAPTOP KETINGGALAN
+                                    </a><br />
+                            </td>
+	</tr><tr>
+		<td>
+								   <a href="Gosip.aspx?id=12546" class="protip"  data-pt-title="<b>MANCING  TRI WULAN II PCFC</b><br><h6>Oleh QOSARIFIN<br /><i class=&#34;fa fa-calendar&#34; aria-hidden=&#34;true&#34;></i> 19/07/2018 <i class=&#34;fa fa-eye&#34; aria-hidden=&#34;true&#34;></i> 323 <i class=&#34;fa fa-comments-o&#34; aria-hidden=&#34;true&#34;></i> 0</h6>">
+                                       <i class="fa fa-bars" aria-hidden="true"></i> 
+                                       MANCING  TRI WULAN II PCFC
+                                    </a><br />
+                            </td>
+	</tr><tr>
+		<td>
+								   <a href="Gosip.aspx?id=12544" class="protip"  data-pt-title="<b>UPDATE PESERTA AKSI BELA PERTAMINA - JAKARTA</b><br><h6>Oleh SERIKAT PEKERJA PERTAMINA PATRA WIJAYAKUSUMA<br /><i class=&#34;fa fa-calendar&#34; aria-hidden=&#34;true&#34;></i> 18/07/2018 <i class=&#34;fa fa-eye&#34; aria-hidden=&#34;true&#34;></i> 1191 <i class=&#34;fa fa-comments-o&#34; aria-hidden=&#34;true&#34;></i> 1</h6>">
+                                       <i class="fa fa-bars" aria-hidden="true"></i> 
+                                       UPDATE PESERTA AKSI BELA PERTA...
+                                    </a><br />
+                            </td>
+	</tr><tr>
+		<td>
+								   <a href="Gosip.aspx?id=12543" class="protip"  data-pt-title="<b>BERITA DUKA OIL MOVEMENT NBM</b><br><h6>Oleh ONA OLLYVIA AGUSTIN<br /><i class=&#34;fa fa-calendar&#34; aria-hidden=&#34;true&#34;></i> 17/07/2018 <i class=&#34;fa fa-eye&#34; aria-hidden=&#34;true&#34;></i> 666 <i class=&#34;fa fa-comments-o&#34; aria-hidden=&#34;true&#34;></i> 0</h6>">
+                                       <i class="fa fa-bars" aria-hidden="true"></i> 
+                                       BERITA DUKA OIL MOVEMENT NBM
+                                    </a><br />
+                            </td>
+	</tr><tr>
+		<td>
+								   <a href="Gosip.aspx?id=12542" class="protip"  data-pt-title="<b>BERITA DUKA UTL-RFCC</b><br><h6>Oleh DIAR WAHYU<br /><i class=&#34;fa fa-calendar&#34; aria-hidden=&#34;true&#34;></i> 13/07/2018 <i class=&#34;fa fa-eye&#34; aria-hidden=&#34;true&#34;></i> 732 <i class=&#34;fa fa-comments-o&#34; aria-hidden=&#34;true&#34;></i> 0</h6>">
+                                       <i class="fa fa-bars" aria-hidden="true"></i> 
+                                       BERITA DUKA UTL-RFCC
+                                    </a><br />
+                            </td>
+	</tr><tr>
+		<td>
+								   <a href="Gosip.aspx?id=12541" class="protip"  data-pt-title="<b>MOHON DIRI ANDHIKA WIRASWASTIKA (747520)</b><br><h6>Oleh ANDHIKA WIRASWASTIKA<br /><i class=&#34;fa fa-calendar&#34; aria-hidden=&#34;true&#34;></i> 11/07/2018 <i class=&#34;fa fa-eye&#34; aria-hidden=&#34;true&#34;></i> 1051 <i class=&#34;fa fa-comments-o&#34; aria-hidden=&#34;true&#34;></i> 0</h6>">
+                                       <i class="fa fa-bars" aria-hidden="true"></i> 
+                                       MOHON DIRI ANDHIKA WIRASWASTIK...
+                                    </a><br />
+                            </td>
+	</tr><tr>
+		<td>
+								   <a href="Gosip.aspx?id=12540" class="protip"  data-pt-title="<b>AKSI PEKERJA BELA PERTAMINA</b><br><h6>Oleh SERIKAT PEKERJA PERTAMINA PATRA WIJAYAKUSUMA<br /><i class=&#34;fa fa-calendar&#34; aria-hidden=&#34;true&#34;></i> 11/07/2018 <i class=&#34;fa fa-eye&#34; aria-hidden=&#34;true&#34;></i> 1081 <i class=&#34;fa fa-comments-o&#34; aria-hidden=&#34;true&#34;></i> 0</h6>">
+                                       <i class="fa fa-bars" aria-hidden="true"></i> 
+                                       AKSI PEKERJA BELA PERTAMINA
+                                    </a><br />
+                            </td>
+	</tr><tr>
+		<td>
+                                 </td>
+						    </tr>
+            			        <tr class="list-bordered">
+                                    <td><a href="Gosip.aspx" class="btn btn-default pull-right btn-xs" style="color:#ffffff;">View All</a></td>
+            			        </tr>
+            		        </tbody>
+				        </table>
+                        </td>
+	</tr>
+</table>
+			</div>
+		</div> -->
+
+<!--- END GOSIP --->
+
+<!--- galery -->
+
+<div class="col-xs-12 col-sm-12 col-md-9 main-body">
+  <div class="panel panel-default panel-style">
+    <div class="panel-heading panel-right">NEWS GALLERY</div>
+    <div class="panel-body panel-content ">
+    <div  class="no-padding ">
+     <div class="col-xs-12 col-sm-12 col-md-4 gallery-right-space ">    <div class="title-placer caption-gallery" style="width: 97%;padding-left: 15px;">  <a class="blue" href="GaleriFoto.aspx?id=9325">      <h5 class="bold">Kegiatan Rapat Kilang...</h5>  </a>     <a class="blue" href="GaleriFoto.aspx?id=9325"> <h6 class="position">25/07/2018</h6> </a>       <h6><a class="blue" href="GaleriFoto.aspx?id=9325">See album</a></h6>    </div> <a href="GaleriFoto.aspx?id=9325"><img style="width:302px;height:302px;" class="img-responsive square-thumb gallery-distance gallery-1" src="assets/images/gallery/kilang.jpg"></a></div>	
+
+     <div class="col-xs-12 col-sm-12 col-md-4 gallery-right-space">    <div class="title-placer caption-gallery" style="width: 97%;padding-left: 15px;">        <h5 class="bold">Kegiatan Berdoa Bersama...</h5>        <h6 class="position">25/07/2018</h6>        <h6><a class="blue" href="GaleriFoto.aspx?id=9325">See album</a></h6>    </div> <a href="GaleriFoto.aspx?id=9325"><img style="width:302px;height:302px;" class="img-responsive square-thumb gallery-distance gallery-2" src="assets/images/gallery/kumpul.jpg"></a></div>	
+
+     <div class="col-xs-12 col-sm-12 col-md-4 gallery-right-space">    <div class="title-placer caption-gallery" style="width: 97%;padding-left: 15px;">        <h5 class="bold">Kegiatan Fun Gathering...</h5>        <h6 class="position">25/07/2018</h6>        <h6><a class="blue" href="GaleriFoto.aspx?id=9325">See album</a></h6>    </div> <a href="GaleriFoto.aspx?id=9325"><img style="width:302px;height:302px;" class="img-responsive square-thumb gallery-distance gallery-3" src="assets/images/gallery/fungath.jpg"></a></div>	
+     <a href="#linkmsh" target="_blank" class="btn btn-panel pull-right btn-xs" style="color:#ffffff; margin-top: 10px;">View All</a>
+ </div>
+    </div>
+  </div>
+</div>
+
+
+<!--- end galery -->
+
+<!-- KLIPING 
+    <div class="col-xs-12 col-sm-12 col-md-9 main-body">
+	    <div class="head"><img class="icon-title" src="assets/images/icons/ic_clip.png"> KLIPING</div>
+		    <table class="table table-bordered">
+			    <tbody>
+					<tr>
+						<td class="no-padding">
+                            
+                        </td>
+                    </tr>
+                </tbody>
+              </table>
+    </div>
+END KLIPING -->
+    
+<script src="/WebResource.axd?d=uTc0CHKkfEc5Ops0vpWVRXhaevYHW69DYnJ9vg3MUtQLRBbU8OCo10ezk1F7Z4kS_cxmvhSEeJwe_u-4aHj4rY2iWAFQP-0NNbXYFqrLvqIyXJJ-QLjxXMej8lz92UJTKaBEYoR9QOxTMs8Gc77ydoyLK6fokgEixFG0rou_AbU1&t=634326756860000000" type="text/javascript"></script><script language="javascript">
+//<![CDATA[
+
+//]]>
+</script>
+</form>
+
+            
+        </div>
+
+	</div><!-- /.container -->
+</div><!-- /#top-banner-and-menu -->
+
+<!-- ============================================================= FOOTER ============================================================= -->
+<footer id="footer" class="footer color-bg">
+<a href="#" class="scrollup" style="display: none;">Scroll</a>
+<span id="alert_placeholder" style="z-index:99999;position:fixed;bottom:5px;left:75%;width:25%;"></span>
+<div id="fixBottomPlaceholder" class="bg-primary" style="z-index:99998;position:fixed;bottom:10px;left:72%;width:38%;padding:0px;display:none;">
+   <a href="http://simops.pertamina.com:84/"><img src="assets/images/back.jpg" border="0" alt="Kembali ke SIMOPS versi lama"/></a>
+   <span style="color:Silver;cursor:pointer;" id='close' onclick="javascript:showhide('fixBottomPlaceholder');">x</span>
+</div>
+	<div class="links-social inner-top-xs">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-xs-12 col-sm-6 col-md-3">
+					<div class="contact-timing">
+						<div class="module-heading">
+							<h4 class="module-title">DAFTAR TELPON</h4>
+						</div><!-- /.module-heading -->
+
+						<div class="module-body outer-top-xs">
+							<div class="table-responsive">
+								<table class="table">
+									<tbody>
+										<tr>
+											<td>
+												<h5><a href="http://10.54.16.77/tenis/buku_teleponlist.php" target="_blank">Daftar Telepon</a></h5>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<h5>Ambulance - 118</h5>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<h5>Fire Station Area 70 - 114</h5>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<h5>Fire Station Kilang - 113</h5>
+											</td>
+										</tr>
+
+										<tr>
+											<td>
+												<h5>Security - 111</h5>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div><!-- /.table-responsive -->
+						</div><!-- /.module-body -->
+					</div><!-- /.contact-timing -->
+				</div><!-- /.col -->
+
+				<div class="col-xs-12 col-sm-6 col-md-3">
+					<div class="contact-timing">
+						<div class="module-heading">
+							<h4 class="module-title">USEFUL LINK</h4>
+						</div><!-- /.module-heading -->
+
+						<div class="module-body outer-top-xs">
+							<div class="table-responsive">
+								<table class="table">
+									<tbody>
+										<tr>
+											<td><a href="http://10.54.2.50:84/OnCallDuty/list_oncall.aspx"><h5>Daftar On Call & On Duty</h5></a></td>
+										</tr>
+										<tr>
+											<td><a href="notulen.html"><h5>Notulen Rapat</h5></a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div><!-- /.table-responsive -->
+						</div><!-- /.module-body -->
+					</div><!-- /.contact-timing -->
+				</div><!-- /.col -->
+
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="contact-timing">
+							
+							<h4>Pertamina Refinery Unit IV</h4>
+							<h5>Jalan Letjen Haryono MT 77 Lomanis
+							Cilacap 53221 Jawa Tengah - Indonesia</h5>
+							<h5>T +62 282 531633, 535333 F+ 62 282 531920, 531922</h5>
+							<h5>www.pertamina.com</h5>
+							<h5><span id="ctl00_lblIP">IP: 10.54.132.118</span></h5>
+					</div><!-- /.contact-timing -->
+				</div><!-- /.col -->
+
+			</div><!-- /.row -->
+		</div><!-- /.container -->
+	</div><!-- /.links-social -->
+
+</footer>
+<!-- ============================================================= FOOTER : END============================================================= -->
+
+	<!-- JavaScripts placed at the end of the document so the pages load faster -->
+	
+	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript" src="assets/js/bootstrap-hover-dropdown.min.js"></script>
+	<script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
+	
+	<script type="text/javascript" src="assets/js/echo.min.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.easing-1.3.min.js"></script>
+	<script type="text/javascript" src="assets/js/bootstrap-slider.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.rateit.min.js"></script>
+    <script type="text/javascript" src="assets/js/lightbox.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="assets/js/wow.min.js"></script>
+    <script type="text/javascript" src="assets/js/scripts.js"></script>
+    <script type="text/javascript" src="assets/js/modernizr.js"></script>
+
+	<!-- For demo purposes – can be removed on production 
+	
+	<script src="switchstylesheet/switchstylesheet.js" type="text/javascript"></script>
+    -->
+
+    
+	<script type="text/javascript">
+      $(document).ready(function () {
+            $('.header-navx').scrollToFixed();
+            //$('.sidebar-home').scrollToFixed({
+            //    marginTop: $('.header-nav').outerHeight(true) + 10
+            //});
+	        $('.navbar a.dropdown-toggle').on('click', function (e) {
+	            var $el = $(this);
+	            var $parent = $(this).offsetParent(".dropdown-menu");
+	            $(this).parent("li").toggleClass('open');
+	            //alert($el.attr("href"));
+	            if (!$parent.parent().hasClass('nav')) {
+	                $el.next().css({ "top": $el[0].offsetTop, "left": $parent.outerWidth() - 4 });
+	            }
+
+	            $('.nav li.open').not($(this).parents("li")).removeClass("open");
+
+	            return false;
+	        });
+
+	        $("[id*=btnlogin]").bind("click", function () {
+	            document.getElementById('msgLogin').innerHTML = "";
+	            document.getElementById('btnlogin').innerHTML = "Wait...";
+
+	            $("[id*=btnlogin]").attr("disabled", "true");
+	            $.post("login.aspx", { usr: $("[id*=txtUsername]").val(), pwd: $("[id*=txtPassword]").val() },
+                    function (data, status) {
+                        if (data != "") {
+                            $("[id*=btnlogin]").removeAttr("disabled", "");
+                            document.getElementById('msgLogin').innerHTML = data;
+                            document.getElementById('btnlogin').innerHTML = "Login";
+                        } else {
+                            document.getElementById('msgLogin').innerHTML = "Login Berhasil...";
+                            document.getElementById('msgLogin').className = "text-success";
+                            window.location.href = window.location.href;
+                        }
+                    });
+
+	        });
+
+	        $('#txtPassword').keypress(function (event) {
+	            var keycode = (event.keyCode ? event.keyCode : event.which);
+	            if (keycode == '13') {
+
+	                document.getElementById('msgLogin').innerHTML = "";
+	                document.getElementById('btnlogin').innerHTML = "Wait...";
+
+	                $("[id*=btnlogin]").attr("disabled", "true");
+	                $.post("login.aspx", { usr: $("[id*=txtUsername]").val(), pwd: $("[id*=txtPassword]").val() },
+                    function (data, status) {
+                        if (data != "") {
+                            $("[id*=btnlogin]").removeAttr("disabled", "");
+                            document.getElementById('msgLogin').innerHTML = data;
+                            document.getElementById('btnlogin').innerHTML = "Login";
+                        } else {
+                            document.getElementById('msgLogin').innerHTML = "Login Berhasil...";
+                            document.getElementById('msgLogin').className = "text-success";
+                            window.location.href = window.location.href;
+                        }
+                    });
+
+	            }
+
+	        });
+
+	        $(window).scroll(function () {
+	            if ($(this).scrollTop() > 600) {
+	                $('.scrollup').fadeIn();
+	            } else {
+	                $('.scrollup').fadeOut();
+	            }
+	        });
+
+	        $('.scrollup').click(function () {
+	            $("html, body").animate({ scrollTop: 0 }, 600);
+	            return false;
+	        });
+
+
+	        $('#txtsearchAll').keypress(function (event) {
+	            var keycode = (event.keyCode ? event.keyCode : event.which);
+	            var term = $(this).val();
+	            if (keycode == '13') {
+	                if (term.length >= 3) {
+	                    window.location.href = 'Search.aspx?cari=' + term;
+	                } else {
+	                    showalert('Kata pencarian minimal 3 huruf', 'alert-warning', 0);
+	                }
+	            }
+	        });
+
+	    });
+
+        function showalert(message, alerttype, inform) {
+            if (inform == 0) {
+                $('#alert_placeholder').append('<div id="alertdiv" class="alert ' + alerttype + '"><a class="close" data-dismiss="alert">×</a><span>' + message + '</span></div>');
+                setTimeout(function () { $("#alertdiv").remove(); }, 3000);
+            } else {
+                $('#errForm').append('<span id="alertdiv" class="alert ' + alerttype + '">' + message + '</span>');
+            }
+
+        }
+
+        function showhide(id) {
+            var e = document.getElementById(id);
+            e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+        }
+
+ $(document).ready(function(){
+  $('.dropdown-submenu a.multiple').on("click", function(e){
+    $(this).next('ul').toggle();;
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+
+$(document).ready(function() {
+  $(document).on("click", function(event) {
+    var trigger = $(".a.multiple")[0];
+    var dropdown = $(".dropdown-submenu-content");
+    if (dropdown !== event.target && !dropdown.has(event.target).length && trigger !== event.target) {
+      $(".dropdown-submenu-content").hide();
+    }
+  });
+});
+	</script>
+
+    
+
+</body>
+</html>
